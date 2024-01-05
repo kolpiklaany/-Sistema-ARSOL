@@ -4,6 +4,7 @@
 
 }
 
+
 /* ------------- HEADER -------------- */
 .col-Header-Left p {
     position: relative;
@@ -33,7 +34,7 @@
 .col-Header-Left {
     display: flex;
     flex: 1;
-    padding-left: 10px;
+    padding-left: 0;
 }
 
 
@@ -61,12 +62,13 @@
 .col-Header-Right button[type="submit"] {
     position: absolute;
     right: 23px;
-    top: 3px;
+    top: 5px;
     padding: 5px 10px;
     color: #000000;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 10px;
 }
 
 #col-Input-Buscar {
@@ -75,44 +77,63 @@
     padding: 2px;
 }
 
+#col-BuscarBtn{
+    position: relative;
+    height: 1vh;
+    right:2.188rem;
+    top: 0.313rem;
+    background: transparent;
+}
+
 /*---TERMINA HEADER----*/
 
 /*Boton de limpiar*/
-.col-Div-Limpiar{
+.col-Div-Limpiar {
     display: flex;
     justify-content: flex-end;
-    margin-right: 3.125rem;
+    align-items: center;
+    position: relative;
+    margin-right: 50px;
 }
-#col-Btn-Limpiar{
+
+.alert {
+    margin-right: 100px;
+    transition: opacity 0.5s ease-in-out;
+    /* Agregar transición para animación */
+    opacity: 0;
+    /* Comenzar con la alerta oculta */
+    display: none;
+    /* Ocultar la alerta inicialmente */
+}
+
+.show {
+    display: block !important;
+    /* Forzar la visibilidad de la alerta */
+    opacity: 1;
+    /* Mostrar la alerta con una animación */
+}
+
+
+#col-Btn-Limpiar {
     width: 140%;
     height: 4vh;
     border: 2px solid;
     cursor: pointer;
-    background:#E3F5FF;
+    background: #E3F5FF;
     border-radius: 4px;
 }
-#col-Btn-Limpiar:hover{
-    background:#A6DFFF;
+
+#col-Btn-Limpiar:hover {
+    background: #A6DFFF;
 }
 
-#col-Btn-Limpiar:active{
-    background:#5BC4FF;
+#col-Btn-Limpiar:active {
+    background: #5BC4FF;
 }
 
 /*Termina boton de limpiar */
 
 /*AQUI EDITAMOS PARA QUE SOLO SE MUESTRE DATOS PERSONALES AL CARGAR PAGINA */
-.col-Div-Direccion {
-    display: none;
-}
-
-.col-Div-Datos-Laborales {
-    display: none;
-}
-
-.col-Div-Materiales-Asignados {
-    display: none;
-}
 
 /*AQUI TERMINAMOS PARA QUE SOLO SE MUESTRE DATOS PERSONALES AL CARGAR PAGINA */
 
@@ -129,7 +150,7 @@ input {
     background: #fff;
     color: #000;
     outline: none;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-right: 10px;
 }
 
@@ -139,15 +160,93 @@ input::placeholder {
 
 /*termina formato de los inputs */
 
+.submit {
+    width: 99.5%;
+    background-color: #FF8888;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #FF5555;
+}
+
+
+.col-Div-Limpiar {
+    width: 100%;
+    height: auto;
+    background: yellow;
+
+}
+
+#col-FormLimpiar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.col-limpiarBtn {
+    margin-right: 10px;
+}
+
+.col-limpiarBtn,
+.col-imprimirBtn {
+    font-size: 14px;
+    height: 32px;
+    width: 10%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #FF8888;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.col-limpiarBtn:hover,
+.col-imprimirBtn:hover {
+    background-color: #FF5555;
+}
+
+.col-limpiarBtn:active,
+.col-imprimirBtn:active {
+    background-color: #FF2323;
+}
+
+.input-with-label {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.input-with-label label {
+    position: absolute;
+    top: -6px;
+    /* Ajusta esto para alinear verticalmente el texto */
+    left: 5px;
+    /* Ajusta esto para alinear horizontalmente el texto */
+    background-color: white;
+    /* Ajusta el color del fondo si es necesario */
+    padding: 0 5px;
+    /* Añade espaciado alrededor del texto */
+    font-size: 9px;
+    /* Ajusta el tamaño del texto */
+    color: #666666;
+    /* Ajusta el color del texto */
+    pointer-events: none;
+    /* Evita que la etiqueta interfiera con el input */
+}
+
+
+
 /*EMPIEZA EL DIV Y FORM2 "DATOS PERSONALES */
 .col-Div-Datos-Personales {
     /*DIV QUE SOSTIENE AL FORM */
     width: 100%;
-    height: 250px;
-    padding: 0 2em;
-    margin-bottom: 30px;
-    position: relative;
+    height: auto;
+    padding: 0 1em;
+    background: red;
+  
+
 }
+
 
 .col-Titulo-Datos-Personales {
     /*TITULO DEL DIV*/
@@ -156,13 +255,23 @@ input::placeholder {
     margin-left: 30px;
     margin-bottom: 5px;
 
+
 }
+
+.col-datos-personales {
+    width: 80%;
+    height: 27vh;
+ 
+    margin-bottom: 30px;
+}
+
 
 .col-Form2 {
     /*FORMULARIO 2 */
-    height: 230px;
-    width: 80%;
-    padding-top: 30px;
+    height: auto;
+    width: 100%;
+    background: blue;
+ 
 }
 
 #col-Titulo-Profesion {
@@ -214,9 +323,10 @@ input::placeholder {
     width: 100%;
 }
 
-#col-Fecha-Nss input:nth-child(n+1):nth-child(-n+4) {
+.input-fecha-nacimiento {
     /*INPUT DESDE FECHA DE NACIMIENTO HASTA NSS */
-    width: 25%;
+    width: 100%;
+    margin-right: 100px;
 }
 
 /*TERMINA DIV DE FECHA DE NACIMIENTO A NSS */
@@ -275,7 +385,7 @@ input::placeholder {
     /*label de sexo M Y F */
     font-size: 15px;
     position: relative;
-    top: 10px;
+    top: 5px;
 
 }
 
@@ -286,7 +396,7 @@ input::placeholder {
     height: auto;
     border: none;
     background: none;
-    margin: 0 10px;
+    margin: -20% 10px;
     padding: 0;
 }
 
@@ -308,16 +418,15 @@ input::placeholder {
 /*DIV DEL INPUT GRANDE */
 
 .col-Input-File {
-    display: flex;
-    align-items: center;
+    bottom: 200px;
+    left: 105%;
     height: 200px;
     width: 17%;
     position: relative;
-    left: 81%;
-    bottom: 88%;
     border-radius: 20px;
     border: 1px solid #030303;
     overflow: hidden;
+    cursor: pointer;
     /* Esto es importante para que la imagen no se salga del contenedor */
 }
 
@@ -341,6 +450,7 @@ input[type="file"] {
     padding: 0;
     border: solid transparent;
     background: transparent;
+    cursor: pointer;
     /* Oculta el input de tipo archivo, pero sigue siendo clickeable */
 }
 
@@ -350,52 +460,44 @@ input[type="file"] {
 /*EMPIEZA DIV DE DIRECCION Y FORM3 */
 .col-Div-Direccion {
     width: 100%;
-    height: 60px;
-    padding: 0 2em;
+    height: auto;
     margin-bottom: 30px;
-}
-
-.col-Titulo-Direccion {
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 30px;
-    margin-bottom: 5px;
-}
-
-.col-Form3 {
     display: flex;
     width: 100%;
-
+    
 }
 
 .col-Div-Direccion input:nth-child(1) {
-    width: 10%;
+    width: 33.33%;
 }
 
 .col-Div-Direccion input:nth-child(n+2):nth-child(-n+4) {
-    width: 15%;
+    width: 33.33%;
 }
 
 .col-Div-Direccion input:nth-child(5) {
-    width: 25%;
+    width: 33.33%;
 }
+
+
+.col-Div-Direccion input {
+    width: calc(30% - 10px);
+    /* Ajusta el ancho según necesites */
+    /* Otros estilos comunes para los inputs */
+}
+
 
 /*TERMINA DIV DE DIRECCION Y FORM3 */
 
 /*EMPIEZA EL DIV DE DATOS LABORALES */
 .col-Div-Datos-Laborales {
     width: 100%;
-    height: 130px;
-    padding: 0 2em;
+    height: auto;
+ 
     margin-bottom: 30px;
 }
 
-.col-Titulo-Datos-Laborales {
-    display: inline-block;
-    cursor: pointer;
-    margin-bottom: 5px;
-    margin-left: 30px;
-}
+
 
 .col-Div-Datos-Lab-1 {
     display: flex;
@@ -404,15 +506,15 @@ input[type="file"] {
 }
 
 .col-Div-Datos-Lab-1 input:nth-child(1) {
-    width: 25%;
+    width: 100%;
 }
 
 .col-Div-Datos-Lab-1 input:nth-child(2) {
-    width: 50%;
+    width: 100%;
 }
 
 .col-Div-Datos-Lab-1 input:nth-child(3) {
-    width: 25%;
+    width: 100%;
 }
 
 .col-Div-Datos-Lab-2 {
@@ -445,60 +547,7 @@ input[type="file"] {
 
 /*TERMINA EL DIV DE DATOS LABORALES */
 
-/*EMPIEZA DIV DE MATERIALES ASIGNADOS */
-.col-Div-Materiales-Asignados {
-    width: 100%;
-    height: auto;
-    padding: 0 2em;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.col-Titulo-Materiales-Asignados {
-    display: inline-block;
-    cursor: pointer;
-    margin-bottom: 5px;
-    margin-left: 30px;
-}
-
-.col-Div-Materiales-Asignados table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.col-Div-Materiales-Asignados table td {
-    height: 30px;
-}
-
-#col-Titulos-Tabla,
-#col-Titulos-Tabla td {
-    background: rgb(150, 150, 150);
-}
-
-/*TERMINA DIV DE MATERIALES ASIGNADOS */
-
-/*BOTON  DE GUARDAR */
-.col-Div-Rh{
-    display: flex;
-    justify-content: center;
-}
-#col-Btn-Guardar{
-    width: 140%;
-    height: 4vh;
-    border: 2px solid #030303;
-    cursor: pointer;
-    background:#FF8888;
-    border-radius: 4px;
-    color: #ffF;
-    margin-bottom: 20px;
-}
-#col-Btn-Guardar:hover{
-    background: #FF5555 ;
-}
-#col-Btn-Guardar:active{
-    background: #FF2323 ;
-}
-/*termina BOTON DE GUARDAR */
+/* ESTILO PARA LOS BOTONES DE GUARDAR INFORMACION*/
 
 
 /*Modo horizontal para celular*/
@@ -526,219 +575,11 @@ input[type="file"] {
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape),
 only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 
-    /*Cambiarle el tamaño a los h1*/
-    .col-Header-Center h1 {
-        font-size: 20px;
-    }
-
-    /*darle a todos los inputs formato */
-    input::placeholder {
-        font-size: 12px;
-    }
-
-    .col-Div-Datos-Personales {
-        /*DIV QUE SOSTIENE AL FORM DATOS PERSONALES */
-        width: 100%;
-        height: 310px;
-        padding: 0 2em;
-        margin-bottom: 30px;
-    }
-
-    /*termina formato de los inputs */
-    .col-Form2 {
-        /*FORMULARIO 2 */
-        height: 230px;
-        width: 80%;
-
-    }
-
-    .col-Titulo-Datos-Personales {
-        /*TITULO DEL DIV*/
-        display: inline-block;
-        cursor: pointer;
-        font-size: 20px;
-        margin-left: 30px;
-
-    }
-
-    #col-Estado-Tipo-Sangre label {
-        /*label de sexo M Y F */
-        font-size: 12px;
-        position: relative;
-        top: 10px;
-    }
-
-    /*DIV DEL INPUT GRANDE */
-    .col-Input-File {
-        display: flex;
-        align-items: center;
-        height: 200px;
-        width: 22%;
-        position: relative;
-        left: 81%;
-        bottom: 70%;
-        border-radius: 20px;
-        border: 1px solid #030303;
-
-    }
-
-    #col-UploadedImage {
-        /* Ocultar la imagen inicialmente */
-        max-width: 100%;
-        height: auto;
-        display: none;
-        /* Ocultar la imagen inicialmente */
-    }
-
-    input[type="file"] {
-        width: 100px;
-        height: 32px;
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    /*TERMINA DIV DEL INPUT GRANDE */
-    .col-Div-Direccion {
-        width: 100%;
-        height: 100px;
-        padding: 0 2em;
-        margin-bottom: 30px;
-    }
-
-    .col-Titulo-Direccion {
-        font-size: 20px;
-
-    }
-
-    .col-Div-Datos-Laborales {
-        width: 100%;
-        height: 180px;
-        margin-bottom: 30px;
-        padding: 0 2em;
-    }
-
-    .col-Titulo-Datos-Laborales {
-        font-size: 20px;
-
-    }
-
-    /*EMPIEZA DIV DE MATERIALES ASIGNADOS */
-
-    .col-Div-Materiales-Asignados table {
-        font-size: 12px;
-    }
-
-    .col-Titulo-Materiales-Asignados {
-        font-size: 20px;
-
-    }
-
-
-    /*TERMINA DIV DE MATERIALES ASIGNADOS */
-    /*boton */
-     
-}
-
-/*EDITAR PARA MOBILE */
-@media (max-width:768px) and (orientation: portrait) {
-
-    /*---HEADER CELULAR ----*/
-    .col-Header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .col-Header-Left {
-        order: 1;
-        align-self: flex-start;
-    }
-
-    .col-Header-Left img {
-        max-width: 50px;
-
-    }
-
-    .col-Header-Left p {
-        font-size: 8px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        position: relative;
-        right: 70px;
-    }
-
-    .col-Header-Center {
-        order: 2;
-    }
-
-    .col-Header-Center h1 {
-        font-size: 15px;
-        margin-bottom: 20px;
-        position: relative;
-        bottom: 30px;
-        left: 30px;
-    }
-
-    .col-Header-Right {
-        order: 3;
-        width: 80%;
-
-    }
-
-    .col-Header-Right input[type="text"] {
-        width: 100%;
-        height: 30px;
-        padding: 10px;
-        border-radius: 4px;
-        font-size: 12px;
-    }
-
-    .col-Header-Right button[type="submit"] {
-        position: absolute;
-        right: 25px;
-        top: 5px;
-        padding: 5px 10px;
-        color: #000000;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 10px;
-    }
-
-    /*---TERMINA DIV DE HEADER---*/
-
-    input {
-        width: 100%;
-        height: 32px;
-        border-radius: 6px;
-        font-size: 14px;
-        padding: 0 15px;
-        border: 2px solid rgb(0, 0, 0);
-        background: #fff;
-        color: #000;
-        outline: none;
-        margin-bottom: 5px;
-        margin-right: 10px;
-    }
-
-
-
-   
-    /*darle a todos los inputs formato */
-
-    input::placeholder {
-        font-size: 8px;
-    }
-
-    /*DIV DE DATOS PERSONALES */
     .col-Div-Datos-Personales {
         /*DIV QUE SOSTIENE AL FORM */
         width: 100%;
-        height: 900px;
-        padding: 0 2em;
+        height: auto;
+
 
     }
 
@@ -754,11 +595,18 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
     .col-Form2 {
         /*FORMULARIO 2 */
-
-        height: 300px;
+        height: auto;
         width: 100%;
 
 
+    }
+
+    .col-datos-personales {
+        width: 100%;
+
+        flex-direction: column;
+   
+        height: auto;
     }
 
     #col-Titulo-Profesion {
@@ -871,18 +719,6 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         margin-bottom: 10px;
     }
 
-    /* Estilos para las etiquetas (M y F) */
-    #col-Estado-Tipo-Sangre label[for="col-masculino"],
-    #col-Estado-Tipo-Sangre label[for="col-mujer"] {
-        font-size: 14px;
-    }
-
-
-    #col-Estado-Tipo-Sangre input:nth-child(12) {
-        /*input de tipo de sangre */
-        width: 100%;
-        margin-bottom: 10px;
-    }
 
     /*TERMINA DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
 
@@ -892,31 +728,14 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
     .col-Input-File {
         display: flex;
         align-items: center;
-        height: 170px;
+        height: 100px;
         width: 70%;
         position: relative;
         left: 15%;
-        top: 45%;
+        top: 1px;
         border-radius: 20px;
         border: 1px solid #030303;
 
-    }
-
-    #uploaded-image {
-        /* Ocultar la imagen inicialmente */
-        max-width: 100%;
-        height: auto;
-        display: none;
-        /* Ocultar la imagen inicialmente */
-    }
-
-    input[type="file"] {
-        width: 100px;
-        display: block;
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
 
     /*DIV DE FECHA DE NACIMIENTO A NSS */
@@ -927,53 +746,29 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
     /*EMPIEZA DIV DE DIRECCION Y FORM3 */
     .col-Div-Direccion {
-
         width: 100%;
-        height: 200px;
-
-        padding: 0 2em;
+        height: auto;
+        display: block;
     }
 
-    .col-Titulo-Direccion {
-        display: inline-block;
-        cursor: pointer;
-        font-size: 12px;
-        margin-left: 30px;
-    }
 
-    .col-Form3 {
-        flex-direction: column;
-        width: 100%;
 
-    }
 
-    .col-Div-Direccion input:nth-child(1) {
+
+    .col-Div-Direccion input:nth-child(n+1):nth-child(-n+5) {
         width: 100%;
     }
 
-    .col-Div-Direccion input:nth-child(n+2):nth-child(-n+4) {
-        width: 100%;
-    }
-
-    .col-Div-Direccion input:nth-child(5) {
-        width: 100%;
-    }
 
     /*TERMINA DIV DE DIRECCION Y FORM3 */
 
     /*EMPIEZA EL DIV DE DATOS LABORALES */
     .col-Div-Datos-Laborales {
         width: 100%;
-        height: 370px;
-        padding: 0 2em;
+        height: auto;
+      
     }
 
-    .col-Titulo-Datos-Laborales {
-        display: inline-block;
-        cursor: pointer;
-        font-size: 12px;
-        margin-left: 30px;
-    }
 
     .col-Div-Datos-Lab-1 {
         flex-direction: column;
@@ -1024,19 +819,368 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
     /*TERMINA EL DIV DE DATOS LABORALES */
 
-    /*EMPIEZA DIV DE MATERIALES ASIGNADOS */
+}
 
-    .col-Titulo-Materiales-Asignados {
+
+
+
+
+/*EDITAR PARA MOBILE */
+@media (max-width:768px) and (orientation: portrait) {
+
+    /*---HEADER CELULAR ----*/
+    .col-Header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .col-Header-Left {
+        order: 1;
+        align-self: flex-start;
+    }
+
+    .col-Header-Left img {
+        max-width: 50px;
+
+    }
+
+    .col-Header-Left p {
+        font-size: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        position: relative;
+        right: 70px;
+    }
+
+    .col-Header-Center {
+        order: 2;
+    }
+
+    .col-Header-Center h1 {
+        font-size: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        bottom: 30px;
+        left: 30px;
+    }
+
+    .col-Header-Right {
+        order: 3;
+        width: 80%;
+
+    }
+
+    .col-Header-Right input[type="text"] {
+        width: 100%;
+        height: 30px;
+        padding: 10px;
+        border-radius: 4px;
         font-size: 12px;
     }
 
-    .col-Div-Materiales-Asignados table {
-        font-size: 9px;
+    .col-Header-Right button[type="submit"] {
+        position: absolute;
+        right: 25px;
+        top: 5px;
+        padding: 5px 10px;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 10px;
     }
 
-    /*TERMINA DIV DE MATERIALES ASIGNADOS */
+    /*---TERMINA DIV DE HEADER---*/
 
+
+    /*darle a todos los inputs formato */
+
+
+    /*botones de limpiar y  imprimir*/
+    .col-limpiarBtn,
+    .col-imprimirBtn {
+        font-size: 14px;
+        height: 32px;
+        width: 17%;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #FF8888;
+        border: 2px solid rgb(0, 0, 0);
+    }
+
+    input::placeholder {
+        font-size: 8px;
+    }
+
+    /*DIV DE DATOS PERSONALES */
+    .col-Div-Datos-Personales {
+        /*DIV QUE SOSTIENE AL FORM */
+        width: 100%;
+        height: auto;
+
+
+    }
+
+    .col-Titulo-Datos-Personales {
+        /*TITULO DEL DIV*/
+        display: inline-block;
+        cursor: pointer;
+        margin-bottom: 5px;
+        font-size: 14px;
+        margin-left: 30px;
+
+    }
+
+    .col-Form2 {
+        /*FORMULARIO 2 */
+        height: auto;
+        width: 100%;
+
+
+    }
+
+    .col-datos-personales {
+        width: 100%;
+
+        flex-direction: column;
     
+        height: auto;
+    }
+
+    #col-Titulo-Profesion {
+        /* DIV DE TITULO Y PROFESION */
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    #col-Titulo-Profesion input:nth-child(1) {
+        /*input de titulo */
+        width: 100%;
+    }
+
+    #col-Titulo-Profesion input:nth-child(3) {
+        /*input de profesion */
+        width: 100%;
+    }
+
+    /*DIV DE NOMBRE Y APELLIDOS */
+    #col-Nombres-Apellidos {
+        /*DIV DESDE NOMBRE A APELLIDOS */
+        flex-direction: column;
+
+    }
+
+    #col-Nombres-Apellidos input:nth-child(1) {
+        /*INPUT DE NOMBRE */
+        width: 100%;
+    }
+
+    #col-Nombres-Apellidos input:nth-child(n+2):nth-child(-n+3) {
+        /*INPUT DE APELLIDO PATERNO */
+        width: 100%;
+    }
+
+    #col-Fecha-Nss {
+        /*DIV DESDE FECHA DE NACIMIENTO HASTA NSS */
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    #col-Fecha-Nss input:nth-child(n+1):nth-child(-n+4) {
+        /*INPUT DESDE FECHA DE NACIMIENTO HASTA NSS */
+        width: 100%;
+    }
+
+    #col-Tel-Cuenta {
+        /*DIV DESDE TELEFONO HASTA NUMERO DE CUENTA */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #col-Tel-Cuenta input:nth-child(1) {
+        width: 100%;
+        /*input de telefono */
+
+    }
+
+    #col-Tel-Cuenta input:nth-child(2) {
+        /*input de correo*/
+        width: 100%;
+
+    }
+
+    #col-Tel-Cuenta input:nth-child(3) {
+        /*input de hijos*/
+        width: 100%;
+
+    }
+
+    #col-Tel-Cuenta input:nth-child(5) {
+        /*input de num de cuenta*/
+        width: 100%;
+
+    }
+
+    /*DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
+    #col-Estado-Tipo-Sangre {
+        /*DIV DESDE ESTADO CIVIL HASTA TIPO DE SANGRE */
+        display: block;
+        width: 100%;
+    }
+
+    #col-Estado-Tipo-Sangre input:nth-child(n+1):nth-child(-n+6) {
+        /*input estado civil y licencia de conducir*/
+        width: 100%;
+    }
+
+    #col-Estado-Tipo-Sangre label {
+        /*label de sexo M Y F */
+        font-size: 10px;
+        position: relative;
+        top: -2px;
+        left: 120px;
+    }
+
+    /* Estilos para los input de tipo radio (masculino y femenino) */
+    #col-Input-Masculino,
+    #col-Input-Mujer {
+        width: auto;
+        height: auto;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: auto;
+        position: relative;
+        left: 120px;
+        margin-bottom: 10px;
+    }
+
+
+    /*TERMINA DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
+
+    /*termina formato de los inputs */
+
+    /*DIV DEL INPUT GRANDE */
+    .col-Input-File {
+        display: flex;
+        align-items: center;
+        height: 200px;
+        width: 70%;
+        position: relative;
+        left: 15%;
+        top: 1px;
+        border-radius: 20px;
+        border: 1px solid #030303;
+
+    }
+    
+    .uploaded-Image {
+        max-width: 100%;
+        /* Esto permite que la imagen se ajuste al ancho del contenedor */
+        height: auto;
+        /* Esto mantiene la proporción de aspecto de la imagen */
+    }
+    
+    input[type="file"] {
+        width: 100px;
+        display: block;
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 0;
+        margin-bottom: 0;
+        margin-right: 0;
+        padding: 0;
+        border: solid transparent;
+        background: transparent;
+        cursor: pointer;
+        /* Oculta el input de tipo archivo, pero sigue siendo clickeable */
+    }
+    /*DIV DE FECHA DE NACIMIENTO A NSS */
+
+    /*TERMINA DIV DE FECHA DE NACIMIENTO A NSS */
+
+    /*TERMINA DIV DE DATOS PERSONALES */
+
+    /*EMPIEZA DIV DE DIRECCION Y FORM3 */
+    .col-Div-Direccion {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+
+
+
+
+    .col-Div-Direccion input:nth-child(n+1):nth-child(-n+5) {
+        width: 100%;
+    }
+
+
+    /*TERMINA DIV DE DIRECCION Y FORM3 */
+
+    /*EMPIEZA EL DIV DE DATOS LABORALES */
+    .col-Div-Datos-Laborales {
+        width: 100%;
+        height: auto;
+      
+    }
+
+
+    .col-Div-Datos-Lab-1 {
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .col-Div-Datos-Lab-1 input:nth-child(1) {
+        width: 100%;
+    }
+
+    .col-Div-Datos-Lab-1 input:nth-child(2) {
+        width: 100%;
+    }
+
+    .col-Div-Datos-Lab-1 input:nth-child(3) {
+        width: 100%;
+    }
+
+    .col-Div-Datos-Lab-2 {
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .col-Div-Datos-Lab-2 input:nth-child(1) {
+        width: 100%;
+    }
+
+    .col-Div-Datos-Lab-2 input:nth-child(2) {
+        width: 100%;
+    }
+
+    .col-Div-Datos-Lab-2 input:nth-child(3) {
+        width: 100%;
+    }
+
+    .col-Div-Datos-Lab-3 {
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .col-Div-Datos-Lab-3 input:nth-child(n+1):nth-child(-n+6) {
+        width: 100%;
+    }
+
+
+    /*TERMINA EL DIV DE DATOS LABORALES */
+
 
 
 }
