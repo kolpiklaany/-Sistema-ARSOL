@@ -49,40 +49,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ubicacion = $_POST['ubicacion'] ?? '';
     $fechaFirmaFinal = $_POST['fecha-Firma-Final'] ?? '';
     $motivoBaja = $_POST['motivo-Baja'] ?? '';
+    $infonavit = $_POST['infonavit'] ?? '';
+    $nota = $_POST['nota'] ?? '';
+    $estadoRegistro = $_POST['estado_registro'] ?? '';
     $archivo = $_POST['archivo'] ?? '';
     if ($_FILES['archivo']) {
-
-        $fechaNacimiento = date("Y-m-d", strtotime($_POST['fecha_nacimiento'] ?? ''));
-        $fechaFirmaInicial = date("Y-m-d", strtotime($_POST['fecha-Firma-Inicial'] ?? ''));
-        $fechaFirmaFinal = date("Y-m-d", strtotime($_POST['fecha-Firma-Final'] ?? ''));
-    
-        // Asegurarse de que el salario base sea un número
-        $salarioMensual = floatval($_POST['salario-Mensual'] ?? '0');
-
-
         $archivo = $_FILES['archivo'];
-
-        // Ruta donde se guardará el archivo en el servidor
-        $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/archivos_subidos/' . $archivo['name'];
-
-        // Mover el archivo a la ruta especificada
-        move_uploaded_file($archivo['tmp_name'], $ruta_destino);
-
-        // Guardar la ruta del archivo en la variable $archivo_bd para usarla en la consulta SQL
-        $archivo_bd = $ruta_destino; // Esta sería la ruta que guardarías en la base de datos
+    
+        // Obtener el contenido del archivo en formato base64
+        $contenidoArchivo = base64_encode(file_get_contents($archivo['tmp_name']));
+    
+        // Guardar el contenido codificado en base64 en la variable $archivo_bd para usarla en la consulta SQL
+        $archivo_bd = $contenidoArchivo; // Esta será la cadena Base64 que se guardará en la base de datos
     }
+    
 
     // Preparar la consulta SQL para insertar los datos en la tabla 'datos_personales'
     $sql = "INSERT INTO datos_personales (titulo, profesion, nombres, apellido_paterno, apellido_materno,
     fecha_nacimiento, curp, rfc, nss, telefono, correo, hijos, no_cuenta, estado_civil, licencia_conducir,
     certificado_medico, sexo, tipo_sangre, cp, calle_numero, colonia, ciudad, estado, fecha_firma_inicial,
     puesto, empresa, telefono_empresarial, correo_empresarial, salario_mensual, base, ubicacion, fecha_firma_final,
-    motivo_baja, archivo)
+    motivo_baja, archivo, no_infonavit, nota, estado_registro)
     VALUES ('$titulo', '$profesion', '$nombres', '$apellidoPaterno', '$apellidoMaterno', '$fechaNacimiento',
     '$curp', '$rfc', '$nss', '$telefono', '$correo', '$hijos', '$noCuenta', '$estadoCivil', '$licenciaConducir',
     '$certificadoMedico', '$sexo', '$tipoSangre', '$cp', '$calleNumero', '$colonia', '$ciudad', '$estado',
     '$fechaFirmaInicial', '$puesto', '$empresa', '$telefonoEmpresarial', '$correoEmpresarial', '$salarioMensual',
-    '$base', '$ubicacion', '$fechaFirmaFinal', '$motivoBaja', '$archivo_bd')";
+    '$base', '$ubicacion', '$fechaFirmaFinal', '$motivoBaja', '$archivo_bd', '$infonavit', '$nota', '$estadoRegistro')";
+    
 
     // Ejecutar la consulta y verificar si se realizó correctamente
     if ($conn->query($sql) === TRUE) {

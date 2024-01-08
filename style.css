@@ -150,12 +150,12 @@ input {
     background: #fff;
     color: #000;
     outline: none;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
     margin-right: 10px;
 }
 
 input::placeholder {
-    font-size: 15px;
+    font-size: 11px;
 }
 
 /*termina formato de los inputs */
@@ -226,7 +226,7 @@ input::placeholder {
     /* Ajusta el color del fondo si es necesario */
     padding: 0 5px;
     /* Añade espaciado alrededor del texto */
-    font-size: 9px;
+    font-size: 12px;
     /* Ajusta el tamaño del texto */
     color: #666666;
     /* Ajusta el color del texto */
@@ -253,7 +253,7 @@ input::placeholder {
     display: inline-block;
     cursor: pointer;
     margin-left: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 
 
 }
@@ -300,21 +300,9 @@ input::placeholder {
 
 
 /*DIV DE NOMBRE Y APELLIDOS */
-#col-Nombres-Apellidos input:nth-child(1) {
-    /*INPUT DE NOMBRE */
-    width: 50%;
+#col-Nombres-Apellidos .input-with-label input{
+    width: 100%;
 }
-
-#col-Nombres-Apellidos input:nth-child(2) {
-    /*INPUT DE APELLIDO PATERNO */
-    width: 25%;
-}
-
-#col-Nombres-Apellidos input:nth-child(3) {
-    /*INPUT DE APELLIDO MATERNO */
-    width: 25%;
-}
-
 /*TERMINA DIV DE NOMBRE Y APELLIDOS */
 /*DIV DE FECHA DE NACIMIENTO A NSS */
 #col-Fecha-Nss {
@@ -323,72 +311,39 @@ input::placeholder {
     width: 100%;
 }
 
-.input-fecha-nacimiento {
-    /*INPUT DESDE FECHA DE NACIMIENTO HASTA NSS */
+#col-Fecha-Nss .input-with-label input{
     width: 100%;
-    margin-right: 100px;
 }
-
 /*TERMINA DIV DE FECHA DE NACIMIENTO A NSS */
 
 /*DIV DE TELEFONO A NUMERO DE CUENTA */
-#col-Tel-Cuenta {
+#col-Tel-Cuenta  {
     /*DIV DESDE TELEFONO HASTA NUMERO DE CUENTA */
     display: flex;
     width: 100%;
 }
-
-#col-Tel-Cuenta input:nth-child(1) {
-    width: 25%;
-    /*input de telefono */
-
+#col-Tel-Cuenta  .input-with-label input{
+    width: 100%;
 }
 
-#col-Tel-Cuenta input:nth-child(2) {
-    /*input de correo*/
-    width: 25%;
-
-}
-
-#col-Tel-Cuenta input:nth-child(3) {
-    /*input de hijos*/
-    width: 10%;
-
-}
-
-#col-Tel-Cuenta input:nth-child(5) {
-    /*input de num de cuenta*/
-    width: 40%;
-
-}
 
 /* TERMINA DIV DE TELEFONO A NUMERO DE CUENTA */
+
 /*DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
 #col-Estado-Tipo-Sangre {
     /*DIV DESDE ESTADO CIVIL HASTA TIPO DE SANGRE */
     display: flex;
-
     width: 100%;
 }
 
-#col-Estado-Tipo-Sangre input:nth-child(n+1):nth-child(-n+3) {
-    /*input estado civil y licencia de conducir*/
-    width: 50%;
+
+#col-Estado-Tipo-Sangre .input-with-label input{
+    width: 100%;
 }
 
-#col-Estado-Tipo-Sangre input:nth-child(5) {
-    /*input estado civil y licencia de conducir*/
-    width: 30%;
-}
 
-#col-Estado-Tipo-Sangre label {
-    /*label de sexo M Y F */
-    font-size: 15px;
-    position: relative;
-    top: 5px;
 
-}
-
+/* Estilos para los input de tipo radio (masculino y femenino) */
 /* Estilos para los input de tipo radio (masculino y femenino) */
 #col-Input-Masculino,
 #col-Input-Mujer {
@@ -396,29 +351,22 @@ input::placeholder {
     height: auto;
     border: none;
     background: none;
-    margin: -20% 10px;
+   
     padding: 0;
 }
 
 /* Estilos para las etiquetas (M y F) */
-#col-Estado-Tipo-Sangre label[for="col-masculino"],
-#col-Estado-Tipo-Sangre label[for="col-mujer"] {
+#col-Estado-Tipo-Sangre label[for="col-Input-Masculino"],
+#col-Estado-Tipo-Sangre label[for="col-Input-Mujer"] {
     font-size: 14px;
     margin-right: 5px;
-}
-
-
-#col-Estado-Tipo-Sangre input:nth-child(10) {
-    /*input de tipo de sangre */
-    width: 25%;
-
 }
 
 /*TERMINA DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
 /*DIV DEL INPUT GRANDE */
 
 .col-Input-File {
-    bottom: 200px;
+    bottom: 210px;
     left: 105%;
     height: 200px;
     width: 17%;
@@ -467,16 +415,8 @@ input[type="file"] {
     
 }
 
-.col-Div-Direccion input:nth-child(1) {
-    width: 33.33%;
-}
-
-.col-Div-Direccion input:nth-child(n+2):nth-child(-n+4) {
-    width: 33.33%;
-}
-
-.col-Div-Direccion input:nth-child(5) {
-    width: 33.33%;
+.col-Div-Direccion .input-with-label input{
+    width: 100%;
 }
 
 
@@ -493,7 +433,7 @@ input[type="file"] {
 .col-Div-Datos-Laborales {
     width: 100%;
     height: auto;
- 
+
     margin-bottom: 30px;
 }
 
@@ -502,20 +442,8 @@ input[type="file"] {
 .col-Div-Datos-Lab-1 {
     display: flex;
     width: 100%;
-
 }
 
-.col-Div-Datos-Lab-1 input:nth-child(1) {
-    width: 100%;
-}
-
-.col-Div-Datos-Lab-1 input:nth-child(2) {
-    width: 100%;
-}
-
-.col-Div-Datos-Lab-1 input:nth-child(3) {
-    width: 100%;
-}
 
 .col-Div-Datos-Lab-2 {
     display: flex;
@@ -523,17 +451,6 @@ input[type="file"] {
 
 }
 
-.col-Div-Datos-Lab-2 input:nth-child(1) {
-    width: 25%;
-}
-
-.col-Div-Datos-Lab-2 input:nth-child(2) {
-    width: 50%;
-}
-
-.col-Div-Datos-Lab-2 input:nth-child(3) {
-    width: 25%;
-}
 
 .col-Div-Datos-Lab-3 {
     display: flex;
@@ -546,6 +463,22 @@ input[type="file"] {
 }
 
 /*TERMINA EL DIV DE DATOS LABORALES */
+.col-Div-Nota{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.input-with-label textarea{
+    width: 100%;
+    height: auto;
+    resize: none;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 6px;
+}
+/*DIV QUE TIENE EL TEXT AREA */
+
+
+
+
 
 /* ESTILO PARA LOS BOTONES DE GUARDAR INFORMACION*/
 
@@ -692,18 +625,8 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         width: 100%;
     }
 
-    #col-Estado-Tipo-Sangre input:nth-child(n+1):nth-child(-n+6) {
-        /*input estado civil y licencia de conducir*/
-        width: 100%;
-    }
-
-    #col-Estado-Tipo-Sangre label {
-        /*label de sexo M Y F */
-        font-size: 10px;
-        position: relative;
-        top: -2px;
-        left: 120px;
-    }
+    
+    
 
     /* Estilos para los input de tipo radio (masculino y femenino) */
     #col-Input-Masculino,
@@ -715,10 +638,16 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         padding: 0;
         margin: auto;
         position: relative;
-        left: 120px;
+        left: 300px;
         margin-bottom: 10px;
     }
-
+     
+    #label-M,
+    #label-F,
+    #label-Sexo{
+        position: relative;
+        left: 300px;
+    }
 
     /*TERMINA DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
 
@@ -750,9 +679,6 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         height: auto;
         display: block;
     }
-
-
-
 
 
     .col-Div-Direccion input:nth-child(n+1):nth-child(-n+5) {
@@ -818,6 +744,8 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
 
     /*TERMINA EL DIV DE DATOS LABORALES */
+
+    
 
 }
 
@@ -1031,18 +959,7 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         width: 100%;
     }
 
-    #col-Estado-Tipo-Sangre input:nth-child(n+1):nth-child(-n+6) {
-        /*input estado civil y licencia de conducir*/
-        width: 100%;
-    }
-
-    #col-Estado-Tipo-Sangre label {
-        /*label de sexo M Y F */
-        font-size: 10px;
-        position: relative;
-        top: -2px;
-        left: 120px;
-    }
+   
 
     /* Estilos para los input de tipo radio (masculino y femenino) */
     #col-Input-Masculino,
@@ -1058,7 +975,12 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         margin-bottom: 10px;
     }
 
-
+    #label-M,
+    #label-F,
+    #label-Sexo{
+        position: relative;
+        left: 117px;
+    }
     /*TERMINA DIV DE ESTADO CIVIL HASTA TIPO DE SANGRE */
 
     /*termina formato de los inputs */
@@ -1218,3 +1140,5 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
         display: none;
     }
 }
+
+

@@ -190,6 +190,9 @@ function imprimir() {
                     document.getElementById('col-Input-Ubicacion').value = data['ubicacion'] || '';
                     document.getElementById('col-Input-Fecha-Firma-Final').value = data['fecha_firma_final'] || '';
                     document.getElementById('col-Input-Correo-Motivo-Baja').value = data['motivo_baja'] || '';
+                    document.getElementById('col_Input_no_infonavit').value = data['no_infonavit'] || '';
+                    document.getElementById('nota').value = data['nota'] || '';
+                    document.getElementById('col-Input-Estado_actOn').value = data['estado_registro'] || '';
                     // Repite para todos los campos necesarios
 
 
@@ -242,5 +245,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
+//PARA QUE SE OCULTEN LOS INPUTS QUE YO DIGA

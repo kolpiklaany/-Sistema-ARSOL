@@ -15,7 +15,7 @@ $buscar = $conexion->real_escape_string($buscar);
 
 // Buscar información en las tablas
 $sql = "SELECT * FROM datos_personales 
-        WHERE titulo LIKE '%$buscar%' OR profesion LIKE '%$buscar%' OR nombres LIKE '%$buscar%' 
+        WHERE (titulo LIKE '%$buscar%' OR profesion LIKE '%$buscar%' OR nombres LIKE '%$buscar%' 
         OR apellido_paterno LIKE '%$buscar%' OR apellido_materno LIKE '%$buscar%' OR curp LIKE '%$buscar%' 
         OR rfc LIKE '%$buscar%' OR nss LIKE '%$buscar%' OR telefono LIKE '%$buscar%' OR correo LIKE '%$buscar%' 
         OR hijos LIKE '%$buscar%' OR no_cuenta LIKE '%$buscar%' OR estado_civil LIKE '%$buscar%' 
@@ -25,9 +25,10 @@ $sql = "SELECT * FROM datos_personales
         OR fecha_firma_inicial LIKE '%$buscar%' OR puesto LIKE '%$buscar%' OR empresa LIKE '%$buscar%' 
         OR telefono_empresarial LIKE '%$buscar%' OR correo_empresarial LIKE '%$buscar%' 
         OR salario_mensual LIKE '%$buscar%' OR base LIKE '%$buscar%' OR ubicacion LIKE '%$buscar%' 
-        OR fecha_firma_final LIKE '%$buscar%' OR motivo_baja LIKE '%$buscar%' OR archivo LIKE '%$buscar%'";
+        OR fecha_firma_final LIKE '%$buscar%' OR motivo_baja LIKE '%$buscar%' OR archivo LIKE '%$buscar%' OR no_infonavit LIKE '%$buscar%' OR nota LIKE '%$buscar%') 
+        AND (estado_registro = 'activo' OR estado_registro = 'inactivo')";
 
-$resultado = $conexion->query($sql);
+$resultado = $conexion->query($sql);  
 
 if ($resultado) {
     $datos = array();
@@ -66,7 +67,10 @@ if ($resultado) {
             'ubicacion' => $fila['ubicacion'],
             'fecha_firma_final' => $fila['fecha_firma_final'],
             'motivo_baja' => $fila['motivo_baja'],
-            'archivo' => $fila['archivo']
+            'archivo' => $fila['archivo'],
+            'no_infonavit' => $fila['no_infonavit'], // Nuevo campo
+            'nota' => $fila['nota'], // Nuevo campo
+            'estado_registro' => $fila['estado_registro'] // Nuevo campo
         );
     }
     echo json_encode($datos);
@@ -76,5 +80,3 @@ if ($resultado) {
 
 $conexion->close();
 ?>
-
-
