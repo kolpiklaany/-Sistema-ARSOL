@@ -28,7 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $subtramo = $_POST['rum_subtramo'];
         $margen = $_POST['rum_apagado_margen'];
         $causa = $_POST['rum_causa'];
-        $porcentaje = $_POST['rum-percentage'];
+        $porcentaje = $_POST['valor_porcentaje'];
+
+        
 
 
         $directorio_destino = "carpeta_destino/"; // Cambia esto por la ruta de la carpeta en tu servidor donde guardarás las imágenes

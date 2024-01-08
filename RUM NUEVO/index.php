@@ -1,5 +1,6 @@
 <?php
 include 'guardar.php';
+/* include 'mostrar_datos.php'; */
 ?>
 
 
@@ -42,7 +43,7 @@ include 'guardar.php';
     </header>
     
     <div class="rum-Div-Padre">
-        <form action="guardar.php" method="post" class="rum-Formulario-Padre">
+        <form action="guardar.php" method="post" class="rum-Formulario-Padre" enctype="multipart/form-data">
             <div class="rum-Datos-Generales-Maquina-Vehiculo">
                 <div class="rum-Datos-Generales">
                     <div class="rum-Datos-Generales-Dividir">
@@ -117,22 +118,26 @@ include 'guardar.php';
                 <div class="rum-Odometro-Horometro-Dividir">
                     <p id="rum-P-Title-Odometro-Horometro">Odometro y Horometro</p>
                     <div class="CONTENEDORES-DE-IMAGENES">
-                        <div class="CONTENEDOR-IMAGEN">
-                            <div class="camera-container" id="container-1">
-                                <button id="abrirCamara">Tomar Foto</button>
-                                <video id="video" autoplay style="display: none;"></video>
-                                <canvas id="canvas" style="display: none;"></canvas>
-                                <button id="tomarFoto" class="capture-button" style="display: none;"></button>
-                            </div>
-                            <div class="captura-info">
-                                <div id="imagenCapturada" style="display: none;"></div>
-                                <button id="borrarFoto">Tomar foto de nuevo</button>
-                                <p id="fechaHoraCaptura">Fecha y Hora de Captura: <span id="fechaHora"></span></p>
-                                <p id="ubicacion">Ubicación: <span id="ubicacionInfo"></span></p>
-                            </div>
-                        </div>
+
+
+
+<div class="CONTENEDOR-IMAGEN">
+<div class="camera-container" id="container-1">
+        <button id="abrirCamara">Tomar Foto</button>
+        <video id="video" autoplay style="display: none;"></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+        <button id="tomarFoto" class="capture-button" style="display: none;">Capturar</button>
+    </div>
+    <div class="captura-info">
+        <div id="imagenCapturada" style="display: none;"></div>
+        <button id="borrarFoto">Tomar foto de nuevo</button>
+        <button id="guardarFoto" style="display: none;">Guardar Foto</button>
+        <p id="fechaHoraCaptura">Fecha y Hora de Captura: <span id="fechaHora"></span></p>
+        <p id="ubicacion">Ubicación: <span id="ubicacionInfo"></span></p>
+    </div>
+</div>
                 
-                        <div class="CONTENEDOR-IMAGEN-2">
+             <!--            <div class="CONTENEDOR-IMAGEN-2">
                             <div class="camera-container" id="container-2">
                                 <button id="abrirCamara-2">Tomar Foto</button>
                                 <video id="video-2" autoplay style="display: none;"></video>
@@ -146,6 +151,9 @@ include 'guardar.php';
                                 <p id="ubicacion-2">Ubicación: <span id="ubicacionInfo-2"></span></p>
                             </div>
                         </div>
+
+
+                        
                         <div class="CONTENEDOR-IMAGEN-3" id="container-3">
                             <div class="camera-container" id="container-3">
                                 <button id="abrirCamara-3">Tomar Foto</button>
@@ -173,7 +181,9 @@ include 'guardar.php';
                                 <p id="fechaHoraCaptura-4">Fecha y Hora de Captura: <span id="fechaHora-4"></span></p>
                                 <p id="ubicacion-4">Ubicación: <span id="ubicacionInfo-4"></span></p>
                             </div>
-                        </div>
+                        </div> -->
+
+
                     </div>
                 </div>   
               
@@ -221,7 +231,13 @@ include 'guardar.php';
                     <td><?php echo $causa; ?></td>
                     
                 </tr>
-                <tr>
+
+
+
+
+
+                
+               <!--  <tr>
                     <td>2</td>
                     <td></td>
                     <td></td>
@@ -352,7 +368,7 @@ include 'guardar.php';
                     </div></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> -->
                 
             </tbody>
         </table>
@@ -385,47 +401,47 @@ include 'guardar.php';
             <p id="rum-P-Title-Rendimiento-Operatividad-Causa">% de rendimiento y/o operatividad de la maquina</p>
             <div class="rum-Rendimiento-Operatividad-Causa-Dividir-Centro">
             <div>
-            <input type="radio" id="circle10" name="rum-percentage" value="10">
+            <input type="radio" id="circle10" name="valor_porcentaje" value="10">
             <label for="circle1">10%</label>
         </div>
         <div>
-            <input type="radio" id="circle20" name="rum-percentage" value="20">
+            <input type="radio" id="circle20" name="valor_porcentaje" value="20">
             <label for="circle1">20%</label>
         </div>
        
         <div>
-            <input type="radio" id="circle30" name="rum-percentage" value="30">
+            <input type="radio" id="circle30" name="valor_porcentaje" value="30">
             <label for="circle1">30%</label>
         </div>
         <div>
-            <input type="radio" id="circle40" name="rum-percentage" value="40">
+            <input type="radio" id="circle40" name="valor_porcentaje" value="40">
             <label for="circle1">40%</label>
         </div>
      
         <div>
-            <input type="radio" id="circle50" name="rum-percentage" value="50">
+            <input type="radio" id="circle50" name="valor_porcentaje" value="50">
             <label for="circle1">50%</label>
         </div>
         <div>
-            <input type="radio" id="circle60" name="rum-percentage" value="60">
+            <input type="radio" id="circle60" name="valor_porcentaje" value="60">
             <label for="circle1">60%</label>
         </div>
        
         <div>
-            <input type="radio" id="circle70" name="rum-percentage" value="70">
+            <input type="radio" id="circle70" name="valor_porcentaje" value="70">
             <label for="circle1">70%</label>
         </div>
         <div>
-            <input type="radio" id="circle80" name="rum-percentage" value="80">
+            <input type="radio" id="circle80" name="valor_porcentaje" value="80">
             <label for="circle1">80%</label>
         </div>
     
         <div>
-            <input type="radio" id="circle90" name="rum-percentage" value="90">
+            <input type="radio" id="circle90" name="valor_porcentaje" value="90">
             <label for="circle1">90%</label>
         </div>
         <div>
-            <input type="radio" id="circle100" name="rum-percentage" value="100">
+            <input type="radio" id="circle100" name="valor_porcentaje" value="100">
             <label for="circle1">100%</label>
         </div>
         

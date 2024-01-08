@@ -39,6 +39,7 @@
 
     <div class="col-Div-Limpiar">
         <form action="#" id="col-FormLimpiar">
+            <button class="col-BuscadorBtn" onclick="redireccionar()">Registros</button>
             <button class="col-limpiarBtn" id="limpiarBoton">Limpiar</button>
             <button class="col-imprimirBtn" onclick="imprimir()">Imprimir</button>
         </form>
@@ -219,7 +220,7 @@
                 <div class="col-Div-Datos-Lab-1">
                     <div class="input-with-label">
                         <label for="col-Label-licencia-conducir">Departamento</label>
-                        <input list="col-Base-List" id="col-Input-Base" name="base" placeholder="Departamento" required>
+                        <input list="col-Departamento-List" id="col-Input-Base" name="base" placeholder="Departamento" required>
                     <datalist id="col-Departamento-List">
                         <option>RH</option>
                         <option>SISTEMAS</option>
@@ -303,9 +304,12 @@
                     </div>
  
             </div>
-            <!-- --------------------------------------- -->
+            
+         
             <input class="submit" type="submit" value="Guardar" id="submitFormulario1">
-            <!-- --------------------------------------- -->
+           
+           
+           
         </form>
     </div>
     <script src="script.js"></script>

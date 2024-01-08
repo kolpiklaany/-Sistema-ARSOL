@@ -188,8 +188,13 @@ input::placeholder {
     margin-right: 10px;
 }
 
+.col-BuscadorBtn{
+    margin-right: 10px;
+}
+
 .col-limpiarBtn,
-.col-imprimirBtn {
+.col-imprimirBtn,
+.col-BuscadorBtn{
     font-size: 14px;
     height: 32px;
     width: 10%;
@@ -200,12 +205,14 @@ input::placeholder {
 }
 
 .col-limpiarBtn:hover,
-.col-imprimirBtn:hover {
+.col-imprimirBtn:hover,
+.col-BuscadorBtn:hover {
     background-color: #FF5555;
 }
 
 .col-limpiarBtn:active,
-.col-imprimirBtn:active {
+.col-imprimirBtn:active,
+.col-BuscadorBtn:active {
     background-color: #FF2323;
 }
 
@@ -242,7 +249,7 @@ input::placeholder {
     width: 100%;
     height: auto;
     padding: 0 1em;
-    background: red;
+   
   
 
 }
@@ -270,7 +277,7 @@ input::placeholder {
     /*FORMULARIO 2 */
     height: auto;
     width: 100%;
-    background: blue;
+   
  
 }
 
@@ -475,7 +482,6 @@ input[type="file"] {
     border-radius: 6px;
 }
 /*DIV QUE TIENE EL TEXT AREA */
-
 
 
 
@@ -827,7 +833,8 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
     /*botones de limpiar y  imprimir*/
     .col-limpiarBtn,
-    .col-imprimirBtn {
+    .col-imprimirBtn,
+    .col-BuscadorBtn {
         font-size: 14px;
         height: 32px;
         width: 17%;

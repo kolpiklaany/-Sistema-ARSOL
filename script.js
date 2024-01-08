@@ -241,8 +241,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+//para el buscador
 
-
-
+function redireccionar() {
+    window.location.href = 'Buscador.php';
+  }
 
 //PARA QUE SE OCULTEN LOS INPUTS QUE YO DIGA
