@@ -64,6 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 div.style.display = "block";
             });
         });
+    
+
+        // Restablecer campo del archivo
+        const fileInput = document.getElementById('fileInput');
+        fileInput.value = ''; // Esto limpia el campo del archivo
+        const uploadedImage = document.getElementById('uploadedImage');
+        uploadedImage.src = ''; // Esto limpia la imagen previamente cargada (si hay alguna)
+        uploadedImage.style.display = 'none'; // Oculta la imagen
     }
 
     limpiarBoton.addEventListener("click", limpiarFormularios);
@@ -94,6 +102,8 @@ document.getElementById('colaboradorForm').addEventListener('submit', function(e
     })
     .catch(error => console.error('Error:', error));
 });
+
+
 
 
  
@@ -196,17 +206,16 @@ function imprimir() {
                     // Repite para todos los campos necesarios
 
 
+                    const uploadedImage = document.getElementById('uploadedImage');
 
+                    if (data['archivo']) {
+                        uploadedImage.src = data['archivo'];
+                        uploadedImage.style.display = 'block'; // Mostrar la imagen
+                    } else {
+                        uploadedImage.src = '';
+                        uploadedImage.style.display = 'none'; // Ocultar la imagen
+                    }
                     
-            // Muestra la imagen si está disponible
-            const uploadedImage = document.getElementById('uploadedImage');
-            if (data['archivo']) {
-                uploadedImage.src = '/archivos_subidos/' + data['archivo'];
-                uploadedImage.style.display = 'block'; // Mostrar la imagen
-            } else {
-                uploadedImage.src = '';
-                uploadedImage.style.display = 'none'; // Ocultar la imagen si no hay imagen disponible
-            }
                 } else {
                     console.log('No se encontraron resultados para la búsqueda.');
                 }
@@ -241,10 +250,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-//para el buscador
 
-function redireccionar() {
-    window.location.href = 'Buscador.php';
-  }
+
+
 
 //PARA QUE SE OCULTEN LOS INPUTS QUE YO DIGA
+/* function redireccionar() {
+    if (window.location.href.indexOf("chrome") != -1 || window.location.href.indexOf("safari") != -1) {
+      window.location.href = 'Buscador.php';
+    } else {
+      window.open('Buscador.php', '_blank');
+    }
+  }
+ */
+
+  function redireccionar() {
+    window.location.href = 'Buscador.php';
+  }
+  
+
+
+
+
+
+

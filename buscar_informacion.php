@@ -14,7 +14,7 @@ $buscar = $_POST['buscar'] ?? '';
 $buscar = $conexion->real_escape_string($buscar);
 
 // Buscar información en las tablas
-$sql = "SELECT * FROM datos_personales 
+$sql = "SELECT *, CONCAT('/INNDAKA/newCola/Colaboradores/archivos_subidos/', archivo) AS ruta_archivo FROM datos_personales 
         WHERE (titulo LIKE '%$buscar%' OR profesion LIKE '%$buscar%' OR nombres LIKE '%$buscar%' 
         OR apellido_paterno LIKE '%$buscar%' OR apellido_materno LIKE '%$buscar%' OR curp LIKE '%$buscar%' 
         OR rfc LIKE '%$buscar%' OR nss LIKE '%$buscar%' OR telefono LIKE '%$buscar%' OR correo LIKE '%$buscar%' 
@@ -67,10 +67,11 @@ if ($resultado) {
             'ubicacion' => $fila['ubicacion'],
             'fecha_firma_final' => $fila['fecha_firma_final'],
             'motivo_baja' => $fila['motivo_baja'],
-            'archivo' => $fila['archivo'],
+            'ruta_archivo' => $fila['ruta_archivo'],
             'no_infonavit' => $fila['no_infonavit'], // Nuevo campo
             'nota' => $fila['nota'], // Nuevo campo
-            'estado_registro' => $fila['estado_registro'] // Nuevo campo
+            'estado_registro' => $fila['estado_registro'],
+            'archivo' => $fila['archivo'] // Nuevo campo
         );
     }
     echo json_encode($datos);
@@ -80,3 +81,5 @@ if ($resultado) {
 
 $conexion->close();
 ?>
+
+

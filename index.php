@@ -39,7 +39,7 @@
 
     <div class="col-Div-Limpiar">
         <form action="#" id="col-FormLimpiar">
-            <button class="col-BuscadorBtn" onclick="redireccionar()">Registros</button>
+            <a href="Buscador.php" class="col-BuscadorBtn">Registro</a>
             <button class="col-limpiarBtn" id="limpiarBoton">Limpiar</button>
             <button class="col-imprimirBtn" onclick="imprimir()">Imprimir</button>
         </form>
@@ -184,7 +184,6 @@
                 <div class="col-Input-File">
                     <input type="file" id="fileInput" name="archivo" accept=".jpg, .png, .pdf, .doc, .docx, .xls, .xlsx"
                         required>
-                        
                     <div class="Col-image-container">
                         <img id="uploadedImage" src="#" alt="" class="uploaded-Image" onclick="changeImage()">
                     </div>
@@ -220,7 +219,7 @@
                 <div class="col-Div-Datos-Lab-1">
                     <div class="input-with-label">
                         <label for="col-Label-licencia-conducir">Departamento</label>
-                        <input list="col-Departamento-List" id="col-Input-Base" name="base" placeholder="Departamento" required>
+                        <input list="col-Base-List" id="col-Input-Base" name="base" placeholder="Departamento" required>
                     <datalist id="col-Departamento-List">
                         <option>RH</option>
                         <option>SISTEMAS</option>
@@ -304,14 +303,81 @@
                     </div>
  
             </div>
-            
-         
+            <!-- --------------------------------------- -->
             <input class="submit" type="submit" value="Guardar" id="submitFormulario1">
-           
-           
-           
+            <!-- --------------------------------------- -->
         </form>
     </div>
+
+
+
+
+
+    <!-- -------------------------------------------------------------------------- -->
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const datosString = urlParams.get('datos');
+
+    if (datosString) {
+        const datos = JSON.parse(datosString);
+        document.getElementById("col-Input-Titulo").value = datos.titulo;
+        document.getElementById("col-Input-Profesion").value = datos.profesion;
+        document.getElementById("col-Input-Rfc").value = datos.rfc;
+        document.getElementById("col-Input-Nombres").value = datos.nombres;
+        document.getElementById("col-Input-Apellido-Paterno").value = datos.apellido_paterno;
+        document.getElementById("col-Input-Apellido-Materno").value = datos.apellido_materno;
+        document.getElementById("col-Input-Fecha-Nacimiento").value = datos.fecha_nacimiento;
+        document.getElementById("col-Input-Curp").value = datos.curp;
+        document.getElementById("col_Input_no_infonavit").value = datos.no_infonavit;
+        document.getElementById("col-Input-Nss").value = datos.nss;
+        document.getElementById("col-Input-Correo").value = datos.correo;
+        document.getElementById("col-Input-Hijos").value = datos.hijos;
+        document.getElementById("col-Input-Cuenta").value = datos.no_cuenta;
+        document.getElementById("col-Input-Estado-Civil").value = datos.estado_civil;
+        document.getElementById("col-Input-Licencia-Conducir").value = datos.licencia_conducir;
+        document.getElementById("col-Input-Certificado-Medico").value = datos.certificado_medico;
+        document.getElementById("col-Input-Telefono").value = datos.telefono;
+        document.getElementById("col-Input-Tipo-Sangre").value = datos.tipo_sangre;
+        document.getElementById("col-Input-Cp").value = datos.cp;
+        document.getElementById("col-Input-Calle-Numero").value = datos.calle_numero;
+        document.getElementById("col-Input-Colonia").value = datos.colonia;
+        document.getElementById("col-Input-Ciudad").value = datos.ciudad;
+        document.getElementById("col-Input-Estado").value = datos.estado;
+        document.getElementById("col-Input-Base").value = datos.base;
+        document.getElementById("col-Input-Puesto").value = datos.puesto;
+        document.getElementById("col-Input-Empresa").value = datos.empresa;
+        document.getElementById("col-Input-Telefono-Empresarial").value = datos.telefono_empresarial;
+        document.getElementById("col-Input-Correo-Empresarial").value = datos.correo_empresarial;
+        document.getElementById("col-Input-Ubicacion").value = datos.ubicacion;
+        document.getElementById("col-Input-Salario-Mensual").value = datos.salario_mensual;
+        document.getElementById("col-Input-Estado_actOn").value = datos.estado_registro;
+        document.getElementById("nota").value = datos.nota;
+        document.getElementById("col-Input-Correo-Motivo-Baja").value = datos.motivo_baja;
+        document.getElementById("col-Input-Masculino").checked = datos.sexo === "Masculino";
+        document.getElementById("col-Input-Mujer").checked = datos.sexo === "Femenino";
+        document.getElementById("uploadedImage").value = datos.archivo;
+        document.getElementById("col-Input-Fecha-Firma-Inicial").value = datos.fecha_firma_inicial;
+        document.getElementById("col-Input-Fecha-Firma-Final").value = datos.fecha_firma_final;
+
+       // Muestra la imagen
+        // Muestra la imagen
+        const imagenColaborador = document.getElementById("uploadedImage");
+        if (datos.archivo) {
+            // Asumo que datos.archivo contiene la ruta de la imagen
+            imagenColaborador.src = datos.archivo;
+        } else {
+            // Puedes establecer una imagen predeterminada o un mensaje de que no hay imagen
+            imagenColaborador.src = '/Colaboradores/archivos_subidos/';
+        }
+    }
+});
+
+</script>
+
+    <!-- ----------------------------------------------------------------------------- -->
     <script src="script.js"></script>
 
 </body>

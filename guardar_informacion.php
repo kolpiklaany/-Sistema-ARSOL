@@ -52,16 +52,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $infonavit = $_POST['infonavit'] ?? '';
     $nota = $_POST['nota'] ?? '';
     $estadoRegistro = $_POST['estado_registro'] ?? '';
-    $archivo = $_POST['archivo'] ?? '';
-    if ($_FILES['archivo']) {
-        $archivo = $_FILES['archivo'];
+    $fechaNacimiento = date("Y-m-d", strtotime($_POST['fecha_nacimiento'] ?? ''));
+    $fechaFirmaInicial = date("Y-m-d", strtotime($_POST['fecha-Firma-Inicial'] ?? ''));
+    $fechaFirmaFinal = date("Y-m-d", strtotime($_POST['fecha-Firma-Final'] ?? ''));
+    $archivo = $_FILES['archivo'] ?? '';
+
+     if ($_FILES['archivo']) {
+        // ... (tu código anterior)
     
-        // Obtener el contenido del archivo en formato base64
-        $contenidoArchivo = base64_encode(file_get_contents($archivo['tmp_name']));
+        // Ruta donde se guardará el archivo en el servidor
+        $ruta_destino = '/Colaboradores/archivos_subidos/' . $archivo['name'];
+            
+        // Mover el archivo a la ruta especificada
+        move_uploaded_file($archivo['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $ruta_destino);
     
-        // Guardar el contenido codificado en base64 en la variable $archivo_bd para usarla en la consulta SQL
-        $archivo_bd = $contenidoArchivo; // Esta será la cadena Base64 que se guardará en la base de datos
+        // Guardar la ruta del archivo en la variable $archivo_bd para usarla en la consulta SQL
+        $archivo_bd = $ruta_destino; // Esta sería la ruta que guardarías en la base de datos
     }
+    
+
+    /* if ($_FILES['archivo']) {
+        $archivo = $_FILES['archivo'];
+        
+        // Obtener el contenido del archivo en Base64
+        $archivo_base64 = base64_encode(file_get_contents($archivo['tmp_name']));
+        
+        // Guardar la representación Base64 del archivo en la variable $archivo_bd para usarla en la consulta SQL
+        $archivo_bd = $archivo_base64; // Esta sería la representación Base64 que guardarías en la base de datos
+    } 
+     */
     
 
     // Preparar la consulta SQL para insertar los datos en la tabla 'datos_personales'
