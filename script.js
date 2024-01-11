@@ -82,7 +82,7 @@ function limpiarFormularios() {
     // Resto del código para limpiar los formularios...
 }
 
-// Enviar formulario mediante AJAX
+/*
 document.getElementById('colaboradorForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -103,8 +103,7 @@ document.getElementById('colaboradorForm').addEventListener('submit', function(e
     .catch(error => console.error('Error:', error));
 });
 
-
-
+*/
 
  
 

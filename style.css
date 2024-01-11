@@ -201,6 +201,8 @@ input::placeholder {
     border: 2px solid rgb(0, 0, 0);
 }
 
+
+
 .col-limpiarBtn:hover,
 .col-imprimirBtn:hover,
 .col-BuscadorBtn:hover {
@@ -222,6 +224,8 @@ input::placeholder {
     justify-content: center;
     align-items: center;
 }
+
+
 
 .input-with-label {
     position: relative;
@@ -840,17 +844,7 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
 
     /*botones de limpiar y  imprimir*/
-    .col-limpiarBtn,
-    .col-imprimirBtn,
-    .col-BuscadorBtn{
-        font-size: 14px;
-        height: 32px;
-        width: 17%;
-        border-radius: 6px;
-        cursor: pointer;
-        background: #FF8888;
-        border: 2px solid rgb(0, 0, 0);
-    }
+  
 
     input::placeholder {
         font-size: 8px;
@@ -1117,7 +1111,6 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
 
 
     /*TERMINA EL DIV DE DATOS LABORALES */
-
 
 
 }

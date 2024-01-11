@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" href="imgs/arsol.jpg" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>COLABORADORES</title>  
@@ -41,7 +42,9 @@
         <form action="#" id="col-FormLimpiar">
             <a href="Buscador.php" class="col-BuscadorBtn">Registro</a>
             <button class="col-limpiarBtn" id="limpiarBoton">Limpiar</button>
-            <button class="col-imprimirBtn" onclick="imprimir()">Imprimir</button>
+            <button class="col-imprimirBtn" onclick="imprimirDatos()">Imprimir</button>
+
+          
         </form>
     </div>
     <!--    EL DIV QUE TIENE EL FORMULARIO1 DE DATOS PERSONALES  -->
@@ -375,6 +378,137 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const datosString = urlParams.get('datos');
+
+            if (datosString) {
+                const datos = JSON.parse(datosString);
+                document.getElementById("col-Input-Titulo").value = datos.titulo;
+                document.getElementById("col-Input-Profesion").value = datos.profesion;
+                document.getElementById("col-Input-Rfc").value = datos.rfc;
+                document.getElementById("col-Input-Nombres").value = datos.nombres;
+                document.getElementById("col-Input-Apellido-Paterno").value = datos.apellido_paterno;
+                document.getElementById("col-Input-Apellido-Materno").value = datos.apellido_materno;
+                document.getElementById("col-Input-Fecha-Nacimiento").value = datos.fecha_nacimiento;
+                document.getElementById("col-Input-Curp").value = datos.curp;
+                document.getElementById("col_Input_no_infonavit").value = datos.no_infonavit;
+                document.getElementById("col-Input-Nss").value = datos.nss;
+                document.getElementById("col-Input-Correo").value = datos.correo;
+                document.getElementById("col-Input-Hijos").value = datos.hijos;
+                document.getElementById("col-Input-Cuenta").value = datos.no_cuenta;
+                document.getElementById("col-Input-Estado-Civil").value = datos.estado_civil;
+                document.getElementById("col-Input-Licencia-Conducir").value = datos.licencia_conducir;
+                document.getElementById("col-Input-Certificado-Medico").value = datos.certificado_medico;
+                document.getElementById("col-Input-Telefono").value = datos.telefono;
+                document.getElementById("col-Input-Tipo-Sangre").value = datos.tipo_sangre;
+                document.getElementById("col-Input-Cp").value = datos.cp;
+                document.getElementById("col-Input-Calle-Numero").value = datos.calle_numero;
+                document.getElementById("col-Input-Colonia").value = datos.colonia;
+                document.getElementById("col-Input-Ciudad").value = datos.ciudad;
+                document.getElementById("col-Input-Estado").value = datos.estado;
+                document.getElementById("col-Input-Base").value = datos.base;
+                document.getElementById("col-Input-Puesto").value = datos.puesto;
+                document.getElementById("col-Input-Empresa").value = datos.empresa;
+                document.getElementById("col-Input-Telefono-Empresarial").value = datos.telefono_empresarial;
+                document.getElementById("col-Input-Correo-Empresarial").value = datos.correo_empresarial;
+                document.getElementById("col-Input-Ubicacion").value = datos.ubicacion;
+                document.getElementById("col-Input-Salario-Mensual").value = datos.salario_mensual;
+                document.getElementById("col-Input-Estado_actOn").value = datos.estado_registro;
+                document.getElementById("nota").value = datos.nota;
+                document.getElementById("col-Input-Correo-Motivo-Baja").value = datos.motivo_baja;
+                document.getElementById("col-Input-Masculino").checked = datos.sexo === "Masculino";
+                document.getElementById("col-Input-Mujer").checked = datos.sexo === "Femenino";
+
+                // Muestra la imagen
+                const imagenColaborador = document.getElementById("uploadedImage");
+                if (datos.archivo) {
+                    // Asumo que datos.archivo contiene la ruta de la imagen
+                    imagenColaborador.src = datos.archivo;
+                } else {
+                    // Puedes establecer una imagen predeterminada o un mensaje de que no hay imagen
+                    imagenColaborador.src = '/Colaboradores/archivos_subidos/';
+                }
+            }
+        });
+
+        function imprimirDatos() {
+            // Recopilar datos del formulario
+            const datos = {
+                titulo: document.getElementById("col-Input-Titulo").value,
+                profesion: document.getElementById("col-Input-Profesion").value,
+                rfc: document.getElementById("col-Input-Rfc").value,
+                nombres: document.getElementById("col-Input-Nombres").value,
+                apellido_paterno: document.getElementById("col-Input-Apellido-Paterno").value,
+                apellido_materno: document.getElementById("col-Input-Apellido-Materno").value,
+                fecha_nacimiento: document.getElementById("col-Input-Fecha-Nacimiento").value,
+                curp: document.getElementById("col-Input-Curp").value,
+                no_infonavit: document.getElementById("col_Input_no_infonavit").value,
+                nss: document.getElementById("col-Input-Nss").value,
+                correo: document.getElementById("col-Input-Correo").value,
+                hijos: document.getElementById("col-Input-Hijos").value,
+                no_cuenta: document.getElementById("col-Input-Cuenta").value,
+                estado_civil: document.getElementById("col-Input-Estado-Civil").value,
+                licencia_conducir: document.getElementById("col-Input-Licencia-Conducir").value,
+                certificado_medico: document.getElementById("col-Input-Certificado-Medico").value,
+                telefono: document.getElementById("col-Input-Telefono").value,
+                tipo_sangre: document.getElementById("col-Input-Tipo-Sangre").value,
+                cp: document.getElementById("col-Input-Cp").value,
+                calle_numero: document.getElementById("col-Input-Calle-Numero").value,
+                colonia: document.getElementById("col-Input-Colonia").value,
+                ciudad: document.getElementById("col-Input-Ciudad").value,
+                estado: document.getElementById("col-Input-Estado").value,
+                base: document.getElementById("col-Input-Base").value,
+                puesto: document.getElementById("col-Input-Puesto").value,
+                empresa: document.getElementById("col-Input-Empresa").value,
+                telefono_empresarial: document.getElementById("col-Input-Telefono-Empresarial").value,
+                correo_empresarial: document.getElementById("col-Input-Correo-Empresarial").value,
+                ubicacion: document.getElementById("col-Input-Ubicacion").value,
+                salario_mensual: document.getElementById("col-Input-Salario-Mensual").value,
+                estado_registro: document.getElementById("col-Input-Estado_actOn").value,
+                nota: document.getElementById("nota").value,
+                motivo_baja: document.getElementById("col-Input-Correo-Motivo-Baja").value,
+                sexo: document.getElementById("col-Input-Masculino").checked ? "Masculino" : "Femenino"
+                // Agrega el resto de los campos del formulario según sea necesario
+            };
+
+
+            
+          // Crear una tabla HTML para mostrar los datos
+          const encabezado = `<tr style="background-color: #333; color: white; font-weight: bold;">
+                        <td style="border: 1px solid black; padding: 1px; width: 50px;">
+                            <img src="imgs/grupoArsol.png" alt="Logo" style="max-height: 60px;">
+                        </td>
+                        <td colspan="2" style="border: 1px solid black; padding: 2px; text-align: center; color: red;">Datos del Colaborador</td>
+                    </tr>`;
+
+// Crear una tabla HTML para mostrar los datos
+let tablaHTML = '<table style="border-collapse: collapse; width: 100%; border: 1px solid black; page-break-inside: avoid;">';
+
+// Agregar el encabezado
+tablaHTML += encabezado;
+
+// Agregar los datos
+for (const key in datos) {
+    if (datos.hasOwnProperty(key)) {
+        tablaHTML += `<tr style="border: 1px solid black; page-break-inside: avoid;">
+                        <td style="border: 1px solid black; padding: 2px;"><strong>${key}</strong></td>
+                        <td style="border: 1px solid black; padding: 2px;">${datos[key]}</td>
+                    </tr>`;
+    }
+}
+
+tablaHTML += '</table>';
+
+
+    // Abrir una nueva ventana para mostrar la tabla e imprimir
+    const ventanaImpresion = window.open('', '_blank');
+    ventanaImpresion.document.write(tablaHTML);
+    ventanaImpresion.document.close();
+
+    // Imprimir la ventana
+    ventanaImpresion.print();
+        }
 </script>
 
     <!-- ----------------------------------------------------------------------------- -->
