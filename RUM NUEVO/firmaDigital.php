@@ -19,99 +19,73 @@
     </div>
 
     <script>
-        var canvas = document.getElementById("signature-pad");
+var canvas = document.getElementById("signature-pad");
 
-        function resizeCanvas() {
-            var ratio = Math.max(window.devicePixelRatio || 1, 1 );
-            canvas.width = canvas.offsetWidth * ratio;
-            canvas.height = canvas.offsetHeight * ratio;
-            canvas.getContext("2d").scale(ratio, ratio);
-        }
-        window.onresize = resizeCanvas;
-        resizeCanvas();
+function resizeCanvas() {
+    var ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext("2d").scale(ratio, ratio);
+}
+window.onresize = resizeCanvas;
+resizeCanvas();
 
-        var signaturePad = new SignaturePad(canvas, {
-            backgroundColor: 'rgb(250,250,250)'
-        });
+var signaturePad = new SignaturePad(canvas, {
+    backgroundColor: 'rgb(250,250,250)'
+});
 
-        document.getElementById("clear").addEventListener('click', function(){
-            signaturePad.clear();
-        })
+document.getElementById("clear").addEventListener('click', function () {
+    signaturePad.clear();
+});
 
-
-
-
-
-
-
-
-
-        document.getElementById("guardar").addEventListener('click', function() {
+document.getElementById("guardar").addEventListener('click', function () {
     // Obtener la firma dibujada en el canvas
     var dataURL = signaturePad.toDataURL();
 
     // Enviar la firma al servidor
-    fetch('ruta_al_servidor_que_guarda_firma.php', {
+    fetch('guardarFirma.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ firma: dataURL })
     })
-    .then(response => {
-        // Verificar si la respuesta del servidor es un JSON válido
-        if (!response.ok) {
-            throw new Error('Error al guardar la firma');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Manejar la respuesta del servidor
-        console.log('Firma guardada correctamente', data);
-        // Redirigir a index.php con el ID del último registro
-        window.location.href = 'index.php?id=' + data.last_id;
-    })
-    .catch(error => {
-        console.error('Error al guardar la firma:', error.message);
-    });
+        .then(response => {
+            // Verificar si la respuesta del servidor es un JSON válido
+            if (!response.ok) {
+                throw new Error('Error al guardar la firma');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Manejar la respuesta del servidor
+            console.log('Firma guardada correctamente', data);
+            // Redirigir o realizar acciones adicionales si es necesario
+            cargarFirma(data.last_id);
+        })
+        .catch(error => {
+            console.error('Error al guardar la firma:', error.message);
+        });
 });
 
-
-
-
-
-
-
-// Captura el canvas y convierte la firma en base64
-function guardarFirma() {
-    var canvas = document.getElementById('signature-pad');
-    var dataURL = canvas.toDataURL(); // Convertir a base64
-
-    // Enviar la firma al backend usando una solicitud HTTP (por ejemplo, con fetch)
-    fetch('ruta_a_tu_backend.php', {
-        method: 'POST',
-        body: JSON.stringify({ firmaBase64: dataURL }), // Envía la firma en formato base64 al backend
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        // Manejar la respuesta del backend
-        if (response.ok) {
-            console.log('Firma guardada con éxito');
-            // Realizar acciones adicionales si es necesario
-        } else {
-            console.error('Error al guardar la firma');
-        }
-    })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-    });
+// Función para cargar la firma desde el servidor
+function cargarFirma(firmaId) {
+    fetch('obtenerFirma.php?id=' + firmaId)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener la firma');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Manipular la firma obtenida, por ejemplo, mostrarla en algún lugar
+            console.log('Firma obtenida:', data.firmaOperador);
+            document.getElementById("rum-P-Firma-Operador").innerHTML = "Firma del operador: " + data.firmaOperador;
+        })
+        .catch(error => {
+            console.error('Error al obtener la firma:', error.message);
+        });
 }
-
-// Evento del botón GUARDAR para llamar a la función guardarFirma
-document.getElementById('guardar').addEventListener('click', guardarFirma);
-
 
         
     </script>

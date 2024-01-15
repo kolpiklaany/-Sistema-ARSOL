@@ -69,6 +69,7 @@
     border-radius: 10px;
     cursor: pointer;
     font-size: 10px;
+    background: transparent;
 }
 
 #col-Input-Buscar {
@@ -79,10 +80,11 @@
 
 #col-BuscarBtn{
     position: relative;
-    height: 1vh;
+    height: 3vh;
     right:2.188rem;
-    top: 0.313rem;
-    background: transparent;
+    top: 0.325rem;
+    border: none;
+   
 }
 
 /*---TERMINA HEADER----*/
@@ -201,7 +203,15 @@ input::placeholder {
     border: 2px solid rgb(0, 0, 0);
 }
 
+.col-limpiarBtn i,
+.col-imprimirBtn i,
+.col-BuscadorBtn i {
+    background-color: transparent;
+}
 
+.fa{
+    background: transparent;
+}
 
 .col-limpiarBtn:hover,
 .col-imprimirBtn:hover,
@@ -828,7 +838,7 @@ only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: por
     .col-Header-Right button[type="submit"] {
         position: absolute;
         right: 25px;
-        top: 5px;
+        top: 10px;
         padding: 5px 10px;
         color: #000000;
         border: none;

@@ -39,14 +39,13 @@
    
 
     <div class="col-Div-Limpiar">
-        <form action="#" id="col-FormLimpiar">
-            <a href="Buscador.php" class="col-BuscadorBtn">Registro</a>
-            <button class="col-limpiarBtn" id="limpiarBoton">Limpiar</button>
-            <button class="col-imprimirBtn" onclick="imprimirDatos()">Imprimir</button>
+    <form action="#" id="col-FormLimpiar">
+        <a href="Buscador.php" class="col-BuscadorBtn"><i class="fa fa-list"></i></a>
+        <button class="col-limpiarBtn" id="limpiarBoton"><i class="fa fa-refresh"></i></button>
+        <button class="col-imprimirBtn" onclick="imprimirDatos()"><i class="fa fa-print"></i></button>
+    </form>
+</div>
 
-          
-        </form>
-    </div>
     <!--    EL DIV QUE TIENE EL FORMULARIO1 DE DATOS PERSONALES  -->
     <div>
         <h2 class="col-Titulo-Datos-Personales" id="toggleButton1">Datos de los Colaboradores</h2>
@@ -58,7 +57,7 @@
             <div class="col-datos-personales">
                 <div id="col-Titulo-Profesion">
                         <div class="input-with-label">
-                        <label for="col-Label-Titulo">Titulo</label>
+                        <label for="col-Input-Titulo">Titulo</label>
                         <input type="text" list="col-Titulos-List" placeholder="Titulo"  name="titulo" id="col-Input-Titulo">
                         <datalist id="col-Titulos-List">
                             <option>Ingeniero</option>
@@ -68,49 +67,49 @@
                         </datalist>
                     </div>
                     <div class="input-with-label">
-                    <label for="col-Label-Titulo">Profesión</label>
+                    <label for="col-Input-Profesion">Profesión</label>
                     <input id="col-Input-Profesion" type="text" placeholder="  Profesion" name="profesion" required>
                 </div>
                 <div class="input-with-label">
-                    <label for="col-Label-RFC">RFC</label>
+                    <label for="col-Input-Rfc">RFC</label>
                     <input id="col-Input-Rfc" type="text" placeholder="RFC" name="rfc" required>
                 </div>
                 </div>
-                <!--  DIV DE NOMBRE Y APELLIDOS  -->
+                <!--  DIV DE NOMBRE Y APELLIDOS  --> 
                 <div id="col-Nombres-Apellidos">
                     <div class="input-with-label">
-                        <label for="col-Label-Nombre">Nombre</label>
+                        <label for="col-Input-Nombres">Nombre</label>
                         <input type="text" placeholder="Nombre(s)" name="nombres" id="col-Input-Nombres" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Nombre">Apellido Paterno</label>
+                        <label for="col-Input-Apellido-Paterno">Apellido Paterno</label>
                         <input type="text" placeholder="Apellido Paterno" name="apellido_Paterno"
                         id="col-Input-Apellido-Paterno" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Nombre">Apellido Materno</label>
+                        <label for="col-Input-Apellido-Materno">Apellido Materno</label>
                         <input type="text" placeholder="Apellido Materno" name="apellido_Materno"
                         id="col-Input-Apellido-Materno" required>
                     </div>
                     
-                </div>
-                <!-- DIV DE FECHA DE NACIMIENTO HASTA NSS -->
+                </div> 
+                <!-- DIV DE FECHA DE NACIMIENTO HASTA NSS -->                      <!-- AKI MAÑANA LE SIGUES CON LOS LABEL CORREGIR -->
                 <div id="col-Fecha-Nss">
                     <div class="input-with-label">
-                        <label for="col-Label-Fecha-Nacimiento">Fecha de Nacimiento</label>
+                        <label for="col-Input-Fecha-Nacimiento">Fecha de Nacimiento</label>
                         <input type="date" placeholder=" " name="fecha_nacimiento" id="col-Input-Fecha-Nacimiento"
                             required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Curp">Curp</label>
+                        <label for="col-Input-Curp">Curp</label>
                         <input type="text" placeholder="Curp" name="curp" id="col-Input-Curp" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-infonavit">No.Infonavit</label>
+                        <label for="col_Input_no_infonavit">No.Infonavit</label>
                         <input type="text" placeholder="No.Infonavit" name="infonavit" id="col_Input_no_infonavit" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-nss">NSS</label>
+                        <label for="col-Input-Nss">NSS</label>
                         <input type="text" placeholder="NSS" name="nss" id="col-Input-Nss" required>
                     </div>
     
@@ -119,15 +118,15 @@
                 <!--  DIV DESDE TELEFONO HASTA NUMERO DE CUENTA  -->
                 <div id="col-Tel-Cuenta">
                     <div class="input-with-label">
-                        <label for="col-Label-tel">Teléfono</label>
+                        <label for="col-Input-Telefono">Teléfono</label>
                         <input type="text" placeholder="Teléfono" name="telefono" id="col-Input-Telefono" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-correo">Correo</label>
+                        <label for="col-Input-Correo">Correo</label>
                         <input type="text" placeholder="Correo" name="correo" id="col-Input-Correo" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-hijos">Hijos</label>
+                        <label for="col-Input-Hijos">Hijos</label>
                         <input list="col-Hijos-List" id="col-Input-Hijos" name="hijos" placeholder="Hijos" required>
                     <datalist id="col-Hijos-List">
                         <option value="Si">
@@ -135,7 +134,7 @@
                     </datalist>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-correo">Correo</label>
+                        <label for="col-Input-Cuenta">Correo</label>
                         <input type="text" placeholder="No.Cuenta" name="no-cuenta" id="col-Input-Cuenta" required>
                     </div>
                 
@@ -143,7 +142,7 @@
                 <!--  DIV DESDE ESTADO CIVIL HASTA TIPO DE SANGRE -->
                 <div id="col-Estado-Tipo-Sangre">
                     <div class="input-with-label">
-                        <label for="col-Label-estado-civil">Estado Civil</label>
+                        <label for="col-Input-Estado-Civil">Estado Civil</label>
                         <input list="col-Estado-List" id="col-Input-Estado-Civil" name="estado-Civil"
                         placeholder="Estado Civil" required>
                     <datalist id="col-Estado-List">
@@ -152,7 +151,7 @@
                     </datalist>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-licencia-conducir">Licencia de conducir</label>
+                        <label for="col-Input-Licencia-Conducir">Licencia de conducir</label>
                         <input list="col-Licencia-list" id="col-Input-Licencia-Conducir" name="licencia-Conducir"
                         placeholder="Licencia de conducir" required>
                     <datalist id="col-Licencia-list">
@@ -163,7 +162,7 @@
                     </datalist>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Certificado-Medico">Certificado M&eacute;dico</label>
+                        <label for="col-Input-Certificado-Medico">Certificado M&eacute;dico</label>
                         <input list="col-Certificado" placeholder="Certificado Médico" name="certificado-Médico"
                         id="col-Input-Certificado-Medico" required>
                     <datalist id="col-Certificado">
@@ -173,13 +172,13 @@
                     </div>
 
                     <label id="label-Sexo">Sexo:</label>
-                    <label for="masculino" id="label-M">M</label>
+                    <label for="col-Input-Masculino" id="label-M">M</label>
                     <input type="radio" name="sexo" id="col-Input-Masculino" value="Masculino" required>
-                    <label for="mujer" id="label-F">F</label>
+                    <label for="col-Input-Mujer" id="label-F">F</label>
                     <input type="radio" name="sexo" id="col-Input-Mujer" value="Femenino" required>
 
                     <div class="input-with-label">
-                        <label for="col-Label-tipo-sangre">Tipo de sangre</label>
+                        <label for="col-Input-Tipo-Sangre">Tipo de sangre</label>
                         <input list="col-Tipo-De-Sangre-List" id="col-Input-Tipo-Sangre" name="tipo-De-Sangre"
                         placeholder="Tipo de sangre" required>
                     </div>
@@ -196,24 +195,24 @@
             
             <div class="col-Div-Direccion">
                 <div class="input-with-label">
-                    <label for="col-Label-cp">Cp</label>
+                    <label for="col-Input-Cp">Cp</label>
                     <input type="text" placeholder="CP" name="cp" id="col-Input-Cp" required>
                 </div>
                 <div class="input-with-label">
-                    <label for="col-Label-Calle-numero">Calle y Número</label>
+                    <label for="col-Input-Calle-Numero">Calle y Número</label>
                     <input type="text" placeholder="Calle  y Número " name="calleNumero" id="col-Input-Calle-Numero"
                     required>
                 </div>
                 <div class="input-with-label">
-                    <label for="col-Label-Colonia">Colonia</label>
+                    <label for="col-Input-Colonia">Colonia</label>
                     <input type="text" placeholder="Colonia" name="colonia" id="col-Input-Colonia" required>
                 </div>
                 <div class="input-with-label">
-                    <label for="col-Label-Ciudad">Ciudad</label>
+                    <label for="col-Input-Ciudad">Ciudad</label>
                     <input type="text" placeholder="Ciudad" name="ciudad" id="col-Input-Ciudad" required>
                 </div>
                 <div class="input-with-label">
-                    <label for="col-Label-Estado">Estado</label>
+                    <label for="col-Input-Estado">Estado</label>
                     <input type="text" placeholder="Estado" name="estado" id="col-Input-Estado" required>
                 </div>
             </div>
@@ -221,7 +220,7 @@
             <div class="col-Div-Datos-Laborales">
                 <div class="col-Div-Datos-Lab-1">
                     <div class="input-with-label">
-                        <label for="col-Label-licencia-conducir">Departamento</label>
+                        <label for="col-Input-Base">Departamento</label>
                         <input list="col-Base-List" id="col-Input-Base" name="base" placeholder="Departamento" required>
                     <datalist id="col-Departamento-List">
                         <option>RH</option>
@@ -232,11 +231,11 @@
                     </div>
                     
                     <div class="input-with-label">
-                        <label for="col-Label-Puesto">Puesto</label>
+                        <label for="col-Input-Puesto">Puesto</label>
                         <input type="text" placeholder="Puesto" name="puesto" id="col-Input-Puesto" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Empresa">Empresa</label>
+                        <label for="col-Input-Empresa">Empresa</label>
                         <input list="col-Empresa-List" id="col-Input-Empresa" name="empresa" placeholder="Empresa" required>
                     <datalist id="col-Empresa-List">
                         <option>Quiren</option>
@@ -247,22 +246,22 @@
                 <!--  DIV QUE TIENE DESDE TELEFONO EMPRESARIAL HASTA SALARIO MENSUAL -->
                 <div class="col-Div-Datos-Lab-2">
                     <div class="input-with-label">
-                        <label for="col-Label-Telefono-Empresarial">Telefono empresarial</label>
+                        <label for="col-Input-Telefono-Empresarial">Telefono empresarial</label>
                         <input type="text" placeholder="Telefono empresarial" name="telefono-Empresarial"
                         id="col-Input-Telefono-Empresarial" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Telefono-Empresarial">Correo empresarial</label>
+                        <label for="col-Input-Correo-Empresarial">Correo empresarial</label>
                         <input type="text" placeholder="Correo empresarial" name="correo-Empresarial"
                         id="col-Input-Correo-Empresarial" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Salario-Mensual">Salario Mensual</label>
+                        <label for="col-Input-Salario-Mensual">Salario Mensual</label>
                         <input type="text" placeholder="Salario Mensual" name="salario-Mensual"
                         id="col-Input-Salario-Mensual" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Estado">Estado</label>
+                        <label for="col-Input-Estado_actOn">Estado</label>
                         <input type="text" placeholder="Estado" name="estado_registro"
                         id="col-Input-Estado_actOn" required>
                     </div>
@@ -276,7 +275,7 @@
                             id="col-Input-Fecha-Firma-Inicial">
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Ubicacion">Ubicación</label>
+                        <label for="col-Input-Ubicacion">Ubicación</label>
                         <input list="col-Ubicacion-Listas" id="col-Input-Ubicacion" name="ubicacion" placeholder="Ubicación"
                         required>
                     <datalist id="col-Ubicacion-Listas">
@@ -288,11 +287,11 @@
                     </div>
                    
                     <div class="input-with-label">
-                        <label for="col-Label-Fecha-Firma-Final">Fecha firma final</label>
+                        <label for="col-Input-Fecha-Firma-Final">Fecha firma final</label>
                         <input type="date" placeholder=" " name="fecha-Firma-Final" id="col-Input-Fecha-Firma-Final">
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Label-Motivo-Baja">Motivo de baja</label>
+                        <label for="col-Input-Correo-Motivo-Baja">Motivo de baja</label>
                         <input type="text" placeholder="Motivo de baja" name="motivo-Baja" id="col-Input-Correo-Motivo-Baja">
                     </div>
                 </div>
@@ -301,7 +300,7 @@
             </div>
             <div class="col-Div-Nota">
                  <div class="input-with-label">
-                        <label for="col-Label-Nota">Nota</label>
+                        <label for="nota">Nota</label>
                         <textarea name="nota" id="nota" cols="30" rows="10"></textarea>
                     </div>
  
@@ -475,15 +474,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             
           // Crear una tabla HTML para mostrar los datos
-          const encabezado = `<tr style="background-color: #333; color: white; font-weight: bold;">
-                        <td style="border: 1px solid black; padding: 1px; width: 50px;">
-                            <img src="imgs/grupoArsol.png" alt="Logo" style="max-height: 60px;">
+          const encabezado = `<tr style="background-color:#FF8888 ; color: white; font-weight: bold;">
+                        <td style="border-left: 1px solid black; border-right: 1px solid black; padding: 1px; width: 50p">
+                            <img src="imgs/grupoArsol.png" alt="Logo" style="max-height: 70px;">
                         </td>
-                        <td colspan="2" style="border: 1px solid black; padding: 2px; text-align: center; color: red;">Datos del Colaborador</td>
+                        <td colspan="2" style="border-left: 1px solid black; border-right: 1px solid black; padding: 2px; text-align: center; color:#FF2323;">Datos del Colaborador</td>
                     </tr>`;
 
 // Crear una tabla HTML para mostrar los datos
-let tablaHTML = '<table style="border-collapse: collapse; width: 100%; border: 1px solid black; page-break-inside: avoid;">';
+let tablaHTML = '<table style="border-collapse: collapse; width: 100%; border: 1px solid black; page-break-inside: avoid; border-radius:6px;">';
+
 
 // Agregar el encabezado
 tablaHTML += encabezado;

@@ -81,16 +81,16 @@ function initializeContainer(containerId, videoId, canvasId, imagenCapturadaId, 
 initializeContainer('CONTENEDOR-IMAGEN', 'video', 'canvas', 'imagenCapturada', 'fechaHoraCaptura', 'abrirCamara', 'tomarFoto', 'borrarFoto', 'ubicacion');
 
 // Llamamos a la función para inicializar el contenedor 2
-/* initializeContainer('CONTENEDOR-IMAGEN-2', 'video-2', 'canvas-2', 'imagenCapturada-2', 'fechaHoraCaptura-2', 'abrirCamara-2', 'tomarFoto-2', 'borrarFoto-2', 'ubicacion-2');
+ initializeContainer('CONTENEDOR-IMAGEN-2', 'video-2', 'canvas-2', 'imagenCapturada-2', 'fechaHoraCaptura-2', 'abrirCamara-2', 'tomarFoto-2', 'borrarFoto-2', 'ubicacion-2');
 
 // Llamamos a la función para inicializar el contenedor 3
-initializeContainer('CONTENEDOR-IMAGEN-3', 'video-3', 'canvas-3', 'imagenCapturada-3', 'fechaHoraCaptura-3', 'abrirCamara-3', 'tomarFoto-3', 'borrarFoto-3', 'ubicacion-3');
+/* initializeContainer('CONTENEDOR-IMAGEN-3', 'video-3', 'canvas-3', 'imagenCapturada-3', 'fechaHoraCaptura-3', 'abrirCamara-3', 'tomarFoto-3', 'borrarFoto-3', 'ubicacion-3');
 
 // Llamamos a la función para inicializar el contenedor 3
 initializeContainer('CONTENEDOR-IMAGEN-4', 'video-4', 'canvas-4', 'imagenCapturada-4', 'fechaHoraCaptura-4', 'abrirCamara-4', 'tomarFoto-4', 'borrarFoto-4', 'ubicacion-4');
-// Función para obtener la geolocalización y ubicación descriptiva  de los 3 contenedores  */
+// Función para obtener la geolocalización y ubicación descriptiva  de los 3 contenedores  
 
-initializeContainer('CONTENEDOR-IMAGEN-5', 'video-5', 'canvas-5', 'imagenCapturada-5', 'fechaHoraCaptura-5', 'abrirCamara-5', 'tomarFoto-5', 'borrarFoto-5', 'ubicacion-5');
+initializeContainer('CONTENEDOR-IMAGEN-5', 'video-5', 'canvas-5', 'imagenCapturada-5', 'fechaHoraCaptura-5', 'abrirCamara-5', 'tomarFoto-5', 'borrarFoto-5', 'ubicacion-5'); */
 // Función para obtener la geolocalización y ubicación descriptiva  de los 3 contenedores 
 
 
@@ -270,9 +270,58 @@ fetch('guardar_imagen.php', {
  */
 
 
+/* --------------------------------------------------------------------------------- */
 
 
-// Variables para referenciar elementos del DOM
+// Acción al presionar "Tomar Foto"
+document.getElementById('tomarFoto').addEventListener('click', function() {
+  // Tu lógica para tomar la foto y mostrarla en el canvas
+  // Supongamos que la imagen capturada se encuentra en una variable llamada 'imagenBase64'
+
+  // Convertir la imagen a Base64
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+  // Aquí deberías capturar la imagen en 'canvas' desde tu video o cámara
+
+  var imagenBase64 = canvas.toDataURL('image/jpeg'); // Obtener la imagen en Base64
+
+  // Enviar la imagen al servidor
+  fetch('guardar_captura.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'imagen=' + encodeURIComponent(imagenBase64)  // Enviar la imagen en formato Base64 al servidor
+  })
+  .then(response => response.text())
+  .then(data => {
+      console.log(data);
+      // Puedes hacer algo adicional aquí, como reiniciar el flujo de la cámara
+      // o mostrar nuevamente el video
+  })
+  .catch(error => console.error('Error:', error));
+});
+
+// Acción al presionar "Guardar Foto"
+guardarFoto.addEventListener('click', () => {
+    // Enviar la imagen al servidor
+    fetch('guardar_captura.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'imagen=' + encodeURIComponent(imagenCapturada.src)  // Enviar la imagen al servidor
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        // Puedes hacer algo adicional aquí, como reiniciar el flujo de la cámara
+        // o mostrar nuevamente el video
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+/* // Variables para referenciar elementos del DOM
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const abrirCamara = document.getElementById('abrirCamara');
@@ -283,33 +332,28 @@ const guardarFoto = document.getElementById('guardarFoto');
 let stream; // Variable para almacenar el stream de la cámara
 
 // Acción al presionar "Tomar Foto"
-tomarFoto.addEventListener('click', () => {
-    const context = canvas.getContext('2d');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+document.getElementById('tomarFoto').addEventListener('click', function() {
+  // Tu lógica para tomar la foto y mostrarla en el canvas
+  // Supongamos que la imagen capturada se encuentra en una variable llamada 'imagenBase64'
 
-    const imageSrc = canvas.toDataURL('image/png');
-    imagenCapturada.innerHTML = `<img src="${imageSrc}" alt="Captured Image"/>`;
+  // Convertir la imagen a Base64
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+  // Aquí deberías capturar la imagen en 'canvas' desde tu video o cámara
 
-    // Mostrar la imagen capturada y el botón de guardar
-    video.style.display = 'none';
-    canvas.style.display = 'none';
-    imagenCapturada.style.display = 'block';
-    guardarFoto.style.display = 'block';
-});
+  var imagenBase64 = canvas.toDataURL('image/jpeg'); // Obtener la imagen en Base64
 
-// Acción al presionar "Abrir Cámara"
-abrirCamara.addEventListener('click', async () => {
-    try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        video.srcObject = stream;
-        video.style.display = 'block';
-        abrirCamara.style.display = 'none';
-        tomarFoto.style.display = 'block';
-    } catch (error) {
-        console.error('Error al acceder a la cámara: ', error);
-    }
+  // Enviar la imagen al servidor
+  fetch('guardar_captura.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'imagen=' + imagenBase64  // Enviar la imagen en formato Base64 al servidor
+  })
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
 });
 
 // Acción al presionar "Guardar Foto"
@@ -318,9 +362,118 @@ guardarFoto.addEventListener('click', () => {
     // ... tu lógica para enviar la imagen al servidor
     // ... asegúrate de mostrar nuevamente el video o reiniciar el flujo de la cámara si es necesario
 });
+ */
+
+/* --------------------------------------------------------------------------------- */
 
 
 
+
+
+
+// Variables para la segunda cámara
+const video2 = document.getElementById('video-2');
+const canvas2 = document.getElementById('canvas-2');
+const abrirCamara2 = document.getElementById('abrirCamara-2');
+const tomarFoto2 = document.getElementById('tomarFoto-2');
+const imagenCapturada2 = document.getElementById('imagenCapturada-2');
+const guardarFoto2 = document.getElementById('guardarFoto-2');
+
+let stream2; // Variable para almacenar el stream de la segunda cámara
+
+// Acción al presionar "Tomar Foto" para la segunda cámara
+tomarFoto2.addEventListener('click', function() {
+  // Tu lógica para tomar la foto y mostrarla en el canvas para la segunda cámara
+  // Supongamos que la imagen capturada se encuentra en una variable llamada 'imagenBase64_2'
+
+  // Convertir la imagen a Base64 para la segunda cámara
+  var canvas2 = document.getElementById('canvas-2');
+  var ctx2 = canvas2.getContext('2d');
+  // Aquí deberías capturar la imagen en 'canvas2' desde tu video o cámara
+
+  var imagenBase64_2 = canvas2.toDataURL('image/jpeg'); // Obtener la imagen en Base64
+
+  // Enviar la imagen al servidor para la segunda cámara
+  fetch('guardar_captura.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'imagen=' + encodeURIComponent(imagenBase64_2) // Enviar la imagen en formato Base64 al servidor
+  })
+  .then(response => response.text())
+  .then(data => {
+      console.log(data);
+      // Puedes hacer algo adicional aquí, como reiniciar el flujo de la cámara
+      // o mostrar nuevamente el video
+  })
+  .catch(error => console.error('Error:', error));
+});
+
+// Acción al presionar "Guardar Foto" para la segunda cámara
+guardarFoto2.addEventListener('click', () => {
+    // Enviar la imagen al servidor para la segunda cámara
+    fetch('guardar_captura.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'imagen=' + encodeURIComponent(imagenCapturada2.src)  // Enviar la imagen al servidor
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        // Puedes hacer algo adicional aquí, como reiniciar el flujo de la cámara
+        // o mostrar nuevamente el video
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+/* 
+// Variables para la segunda cámara
+const video2 = document.getElementById('video-2');
+const canvas2 = document.getElementById('canvas-2');
+const abrirCamara2 = document.getElementById('abrirCamara-2');
+const tomarFoto2 = document.getElementById('tomarFoto-2');
+const imagenCapturada2 = document.getElementById('imagenCapturada-2');
+const guardarFoto2 = document.getElementById('guardarFoto-2');
+
+let stream2; // Variable para almacenar el stream de la segunda cámara
+
+// Acción al presionar "Tomar Foto" para la segunda cámara
+tomarFoto2.addEventListener('click', function() {
+  // Tu lógica para tomar la foto y mostrarla en el canvas para la segunda cámara
+  // Supongamos que la imagen capturada se encuentra en una variable llamada 'imagenBase64_2'
+
+  // Convertir la imagen a Base64 para la segunda cámara
+  var canvas2 = document.getElementById('canvas-2');
+  var ctx2 = canvas2.getContext('2d');
+  // Aquí deberías capturar la imagen en 'canvas2' desde tu video o cámara
+
+  var imagenBase64_2 = canvas2.toDataURL('image/jpeg'); // Obtener la imagen en Base64
+
+  // Enviar la imagen al servidor para la segunda cámara
+  fetch('guardar_captura.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'imagen=' + imagenBase64_2 // Enviar la imagen en formato Base64 al servidor
+  })
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+});
+
+// Acción al presionar "Guardar Foto" para la segunda cámara
+guardarFoto2.addEventListener('click', () => {
+    // Enviar la imagen al servidor para la segunda cámara
+    // ... tu lógica para enviar la imagen al servidor
+    // ... asegúrate de mostrar nuevamente el video o reiniciar el flujo de la cámara si es necesario
+}); */
+
+
+/* ----------------------------------------------------------------------------- */
 
 
 guardarFoto.addEventListener('click', () => {
@@ -367,3 +520,175 @@ function dataURItoBlob(dataURI) {
 
     return new Blob([arrayBuffer], { type: mimeString });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Función para mostrar la imagen correspondiente al ID de la captura
+function mostrarImagen(idCaptura) {
+  // Lógica para obtener la imagen correspondiente al ID de la captura
+  // Supongamos que haces una solicitud AJAX para obtener la imagen del servidor
+  $.ajax({
+      type: "GET",
+      url: "obtener_imagen.php?id_captura=" + idCaptura,
+      success: function(imagenBinaria) {
+          // Mostrar la imagen en el contenedor 'imagenCapturada'
+          var imagenSrc = "data:image/jpeg;base64," + btoa(imagenBinaria); // Convertir la imagen binaria a Base64
+          document.getElementById('imagenCapturada').innerHTML = '<img src="' + imagenSrc + '" alt="Foto Capturada">';
+          document.getElementById('imagenCapturada').style.display = 'block'; // Mostrar el contenedor de la imagen
+      },
+      error: function() {
+          console.log("Error al obtener la imagen");
+      }
+  });
+}
+
+// Llamada a la función para mostrar la imagen capturada (debe pasar el ID de la captura)
+var idCaptura = 46/* tu lógica para obtener el ID de la captura */;
+mostrarImagen(idCaptura);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------------MODAL---------------------------------------------*/
+function toggleModal() {
+  var modalOverlay = document.getElementById('modalOverlay');
+  modalOverlay.classList.toggle('visible');
+}
+
+function enviarFormulario(event) {
+  event.preventDefault(); // Evita que el formulario se envíe de forma convencional
+
+  // Recoge los datos del formulario
+  var formData = new FormData(document.getElementById('miFormulario'));
+
+  // Envía los datos al servidor utilizando fetch
+  fetch('consulta_datos.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Datos guardados:', data);
+      // Cierra el modal al enviar el formulario
+      toggleModal();
+  })
+  .catch(error => console.error('Error al guardar datos:', error));
+}
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------- */
+
+function guardarFirma() {
+  // Obtén la firma (puedes implementar esto según cómo estés manejando las firmas)
+  var firmaOperador = obtenerFirmaOperador();  // Reemplaza esto con tu lógica real
+  var firmaLider = obtenerFirmaLider();  // Reemplaza esto con tu lógica real
+  var firmaCliente = obtenerFirmaCliente();  // Reemplaza esto con tu lógica real
+
+  // Agrega las firmas al formulario como campos ocultos
+  document.getElementById('firmaForm').innerHTML +=
+      `<input type="hidden" name="firmaOperador" value="${firmaOperador}">
+       <input type="hidden" name="firmaLider" value="${firmaLider}">
+       <input type="hidden" name="firmaCliente" value="${firmaCliente}">`;
+
+  // Envía el formulario
+  $.ajax({
+      type: "POST",
+      url: "guardarFirma.php",
+      data: { firmaOperador: firmaOperador, firmaLider: firmaLider, firmaCliente: firmaCliente },
+      success: function (data) {
+          // data contiene el ID de la firma insertada
+          cargarFirma(data);
+      },
+      error: function (error) {
+          console.log("Error al guardar las firmas: " + error);
+      }
+  });
+}
+
+function cargarFirma(firmaId) {
+  // Utiliza AJAX para obtener la firma desde la base de datos
+  $.ajax({
+      type: "GET",
+      url: "obtenerFirma.php?id=" + firmaId, // Reemplaza obtenerFirma.php con el nombre de tu script para obtener firmas
+      success: function (firma) {
+          // firma contiene la firma recuperada desde la base de datos
+          document.getElementById("rum-P-Firma-Operador").innerHTML = "Firma del operador: " + firma;
+      },
+      error: function (error) {
+          console.log("Error al obtener la firma: " + error);
+      }
+  });
+}
+
+// Implementa las funciones para obtener las firmas según tu lógica
+function obtenerFirmaOperador() {
+  // Implementa la lógica para obtener la firma del operador
+  return "firmaOperador";
+}
+
+function obtenerFirmaLider() {
+  // Implementa la lógica para obtener la firma del líder de proyecto
+  return "firmaLider";
+}
+
+function obtenerFirmaCliente() {
+  // Implementa la lógica para obtener la firma del cliente
+  return "firmaCliente";
+}
+
+
+
+
