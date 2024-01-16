@@ -55,10 +55,16 @@ if ($resultado) {
 $conexion->close();
 
 function determinarAMPM($hora) {
+    // Verificar si $hora es NULL o está vacío
+    if ($hora === null || $hora === '') {
+        // Manejar el caso cuando $hora es NULL o está vacío
+        // Puedes asignar un valor predeterminado o manejarlo según tus necesidades
+        // Por ejemplo:
+        return 'N/A'; // O cualquier valor predeterminado que desees
+    }
+
+    // Convertir a formato AM/PM
     $hora_datetime = DateTime::createFromFormat('H:i:s', $hora);
     return $hora_datetime->format('h:i A');
 }
-
-
-
 ?>

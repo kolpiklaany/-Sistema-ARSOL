@@ -208,19 +208,22 @@ function buscarInformacion() {
               document.getElementById('rum-Input-Economico').value = response[0]['rum_economico'] || '';
               document.getElementById('rum-Input-Tipo').value = response[0]['tipo'] || '';
               document.getElementById('rum-Input-Modelo').value = response[0]['modelo'] || '';
-              document.getElementById('rum-Input-llegada-operador').value = response[0]['llegada_operador'] || '';
+
+          /*     document.getElementById('rum-Input-llegada-operador').value = response[0]['llegada_operador'] || '';
               document.getElementById('rum-Input-Salida-Operador').value = response[0]['salida_operador'] || '';
               document.getElementById('rum-Input-Encendido-Maquina').value = response[0]['encendido_maquina'] || '';
-              document.getElementById('rum-Input-Apagado-Maquina').value = response[0]['apagado_maquina'] || '';
+              document.getElementById('rum-Input-Apagado-Maquina').value = response[0]['apagado_maquina'] || ''; */
+              
               document.getElementById('rum-Input-Tramo').value = response[0]['rum_tramo'] || '';
               document.getElementById('rum-Input-Subtramo').value = response[0]['rum_subtramo'] || '';
               document.getElementById('rum-Input-Apagado-Margen').value = response[0]['margen'] || '';
+              
 /*               document.getElementById('rum-Input-Valor-Porcentaje').value = response[0]['valor_porcentaje'] || '';
- */              document.getElementById('rum-Input-Causa').value = response[0]['causa'] || '';
+ */           /*    document.getElementById('rum-Input-Causa').value = response[0]['causa'] || '';
               
     // Manejar los radio buttons de porcentaje
     var valorPorcentaje = response[0]['valor_porcentaje'] || ''; // Obtener el valor del porcentaje
-    var radioButtons = document.getElementsByName('valor_porcentaje'); // Obtener todos los radio buttons
+    var radioButtons = document.getElementsByName('valor_porcentaje'); // Obtener todos los radio buttons */
 
     // Recorrer los radio buttons para seleccionar el correcto
     radioButtons.forEach(function(radio) {
@@ -688,6 +691,84 @@ function obtenerFirmaCliente() {
   // Implementa la lógica para obtener la firma del cliente
   return "firmaCliente";
 }
+
+
+
+
+
+
+
+    // En tu código JavaScript
+document.getElementById('firmaContainer').innerHTML = '<img src="' + data.rutaFirma + '" alt="Firma Digital">';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------ID_USER----------------------------------------------- */
+
+function enviarFormulario(event) {
+  event.preventDefault();
+
+  // Obtener el formulario y el ID del usuario
+  var formulario = document.getElementById("miFormulario");
+  var userId = document.getElementById("user_id").value;
+
+  // Agregar el ID del usuario al formulario
+  var formData = new FormData(formulario);
+  formData.append("user_id", userId);
+
+  // Realizar la solicitud al servidor (puedes usar Fetch API o AJAX)
+  fetch("guardar_informacion.php", {
+      method: "POST",
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Manejar la respuesta del servidor, si es necesario
+      console.log(data);
+  })
+  .catch(error => {
+      console.error("Error al enviar el formulario:", error);
+  });
+
+  // Cerrar la ventana modal u realizar otras acciones después de enviar el formulario
+  toggleModal();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

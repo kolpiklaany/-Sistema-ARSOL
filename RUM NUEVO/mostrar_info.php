@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
         echo '<td>' . $row['fin_trabajo'] . '</td>';
         echo '<td>';
         // Tu código HTML para mostrar la imagen (ajusta según tus necesidades)
-        echo '<img src="' . $row['/archivos_subidos/'] . '" alt="Foto">';
+        echo '<img src="' . $row['/uploads/'] . '" alt="Foto">';
         echo '</td>';
         echo '<td>' . $row['horas_efectivas'] . '</td>';
         echo '<td>' . $row['observaciones'] . '</td>';

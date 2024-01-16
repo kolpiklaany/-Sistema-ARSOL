@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firma digital</title>
     <link rel="stylesheet" href="style1.css">
+    <link rel="icon" href="imgs/firma.jpg" type="image/png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.4/signature_pad.js" integrity="sha512-j36pYCzm3upwGd6JGq6xpdthtxcUtSf5yQJSsgnqjAsXtFT84WH8NQy9vqkv4qTV9hK782TwuHUTSwo2hRF+/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
@@ -48,46 +49,60 @@ document.getElementById("guardar").addEventListener('click', function () {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ firma: dataURL })
+        body: JSON.stringify({ firmaBase64: dataURL })
     })
         .then(response => {
-            // Verificar si la respuesta del servidor es un JSON válido
             if (!response.ok) {
                 throw new Error('Error al guardar la firma');
             }
             return response.json();
         })
         .then(data => {
-            // Manejar la respuesta del servidor
-            console.log('Firma guardada correctamente', data);
-            // Redirigir o realizar acciones adicionales si es necesario
-            cargarFirma(data.last_id);
+            if (data && data.rutaFirma) {
+                console.log('Firma guardada correctamente', data);
+                cargarFirma(data.rutaFirma);
+                  // Redirigir al usuario al index.php
+                  window.location.href = 'index.php';
+            } else {
+                console.error('Error: Respuesta del servidor no contiene la información esperada');
+            }
         })
         .catch(error => {
-            console.error('Error al guardar la firma:', error.message);
+            console.error('Error al enviar la firma al servidor:', error.message);
         });
 });
 
+        // Función para cargar la firma desde el servidor
+function cargarFirma(firmaBase64) {
+    // Puedes manipular la firma base64 según tus necesidades
+    console.log('Firma base64:', firmaBase64);
+
+    // Por ejemplo, puedes mostrar la firma en una imagen
+    document.getElementById("rum-P-Firma-Operador").innerHTML = '<img src="' + firmaBase64 + '" alt="Firma del operador">';
+}
+
+
 // Función para cargar la firma desde el servidor
-function cargarFirma(firmaId) {
-    fetch('obtenerFirma.php?id=' + firmaId)
+function cargarFirma(rutaFirma) {
+    fetch(rutaFirma)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener la firma');
             }
-            return response.json();
+            return response.blob();
         })
-        .then(data => {
+        .then(blob => {
             // Manipular la firma obtenida, por ejemplo, mostrarla en algún lugar
-            console.log('Firma obtenida:', data.firmaOperador);
-            document.getElementById("rum-P-Firma-Operador").innerHTML = "Firma del operador: " + data.firmaOperador;
+            console.log('Firma obtenida:', blob);
+            // Puedes usar la URL.createObjectURL para mostrar la firma en una imagen
+            var imageUrl = URL.createObjectURL(blob);
+            document.getElementById("rum-P-Firma-Operador").innerHTML = '<img src="' + imageUrl + '" alt="Firma del operador">';
         })
         .catch(error => {
             console.error('Error al obtener la firma:', error.message);
         });
 }
+</script>
 
-        
-    </script>
 </body>
 </html>

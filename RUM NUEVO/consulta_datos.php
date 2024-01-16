@@ -13,6 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Recoge los datos del formulario
+$user_id = $_POST['user_id'];
 $actividad = $_POST['descripcion_actividad'];
 $inicio_trabajo = $_POST['inicio_trabajo'];
 $fin_trabajo = $_POST['fin_trabajo'];
@@ -21,8 +22,8 @@ $horas_efectivas = $_POST['horas_efectivas'];
 $observaciones = $_POST['observaciones'];
 
 // Inserta los datos en la base de datos
-$sql = "INSERT INTO registro_actividades (descripcion_actividad, inicio_trabajo, fin_trabajo, combustible, horas_efectivas, observaciones) 
-        VALUES ('$actividad', '$inicio_trabajo', '$fin_trabajo', '$combustible', '$horas_efectivas', '$observaciones')";
+$sql = "INSERT INTO registro_actividades (user_id, descripcion_actividad, inicio_trabajo, fin_trabajo, combustible, horas_efectivas, observaciones) 
+        VALUES ('$user_id', '$actividad', '$inicio_trabajo', '$fin_trabajo', '$combustible', '$horas_efectivas', '$observaciones')";
 
 if ($conn->query($sql) === TRUE) {
     // Envía una respuesta JSON al cliente indicando éxito
@@ -35,4 +36,3 @@ if ($conn->query($sql) === TRUE) {
 // Cierra la conexión a la base de datos
 $conn->close();
 ?>
-

@@ -398,7 +398,7 @@ include 'guardar.php';
             <div class="rum-Div-Contenido-13">
                 <label for="">Frente</label>
             <input type="text" name="rum_apagado_margen" id="rum-Input-Apagado-Margen"
-            placeholder="Ej. Dolores Hidalgo" readonly>
+            placeholder="Ej. Dolores Hidalgo">
         </div>
     </div>
     <div class="rum-Div-Rendimiento-Operatividad-Causa">
@@ -479,6 +479,8 @@ include 'guardar.php';
         <button id="rum-Btn-Limpiar">Limpiar</button>
         <button type="submit" name="guardar" id="rum-Btn-Guardar">Guardar</button>
     </div>
+    <input type="hidden" name="firmaBase64" id="firmaBase64" value="">
+</form>
     </form>
     
 </form>
@@ -490,7 +492,8 @@ include 'guardar.php';
 <!-- ---------------------------VENTANA MODAL----------------------------------- -->
 
 <!-- ... (código existente) ... -->
-
+<form id="miFormulario" onsubmit="enviarFormulario(event)">
+<input type="hidden" id="user_id" name="user_id" value="ID_DEL_USUARIO_ACTUAL">
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
         <span class="close-btn" onclick="toggleModal()">&times;</span>
@@ -518,7 +521,8 @@ include 'guardar.php';
             <input type="submit" value="Enviar">
         </form>
     </div>
-</div>
+</div> 
+ </form>
 
 
 <!-- ... (código existente) ... -->
@@ -531,3 +535,5 @@ include 'guardar.php';
 </body>
 
 </html>
+
+

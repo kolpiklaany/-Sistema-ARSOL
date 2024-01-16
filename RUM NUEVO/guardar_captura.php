@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ubicacion = "imagen"; // Cambia por la ubicación real
 
     // Guardar la imagen en una carpeta local
-    $rutaCarpetaLocal = "C:\xampp\htdocs\RUM NUEVO\capturas";
+    $rutaCarpetaLocal = "C:/xampp/htdocs/INNDAKA/RUM NUEVO/capturas/";
 
     // Asegúrate de que la carpeta exista, si no, créala
     if (!file_exists($rutaCarpetaLocal)) {
