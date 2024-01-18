@@ -15,19 +15,19 @@
 
 <body>
     <!--     Header -->
-    <header class="col-Header">
-        <div class="col-Header-Left">
-            <a href="#" class="col-Button-Link">
+    <header class="rum-Header">
+        <div class="rum-Header-Left">
+            <a href="#" class="rum-Button-Link">
                 <img src="imgs/grupoArsol.png" alt="Logo">
             </a>
-            <p id="col-Bienvenida-header"> Bienvenida <b>Marta Caballero</b></p>
+            <p id="rum-Bienvenida-header"> Bienvenida <b>Marta Caballero</b></p>
         </div>
-        <div class="col-Header-Center">
+        <div class="rum-Header-Center">
             <h1>COLABORADORES</h1>
         </div>
-        <div class="col-Header-Right">
-            <input type="text" placeholder="   Buscar..." name="buscador" id="col-Input-Buscar">
-            <button id="col-BuscarBtn" onclick="buscarInformacion()"><i class="fa fa-search"></i></button>
+        <div class="rum-Header-Right">
+            <input type="text" placeholder="   Buscar..." name="buscador" id="rum-Input-Buscar">
+            <button id="rum-BuscarBtn" onclick="buscarInformacion()"><i class="fa fa-search"></i></button>
         </div>
     </header>
     <!--    CONTENEDOR PADRE -->

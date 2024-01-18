@@ -60,9 +60,10 @@ document.getElementById("guardar").addEventListener('click', function () {
         .then(data => {
             if (data && data.rutaFirma) {
                 console.log('Firma guardada correctamente', data);
-                cargarFirma(data.rutaFirma);
-                  // Redirigir al usuario al index.php
-                  window.location.href = 'index.php';
+                // Actualizar el contenido del elemento con la firma
+                document.getElementById("rum-P-Firma-Operador").innerHTML = '<img src="' + data.rutaFirma + '" alt="Firma del operador">';
+                // Redirigir al usuario al index.php después de cargar la firma
+                window.location.href = 'index.php';
             } else {
                 console.error('Error: Respuesta del servidor no contiene la información esperada');
             }
@@ -71,6 +72,29 @@ document.getElementById("guardar").addEventListener('click', function () {
             console.error('Error al enviar la firma al servidor:', error.message);
         });
 });
+
+
+// Función para cargar la firma desde el servidor
+function cargarFirma(rutaFirma) {
+    fetch(rutaFirma)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener la firma');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Manipular la firma obtenida, por ejemplo, mostrarla en algún lugar
+            console.log('Firma obtenida:', blob);
+            // Puedes usar la URL.createObjectURL para mostrar la firma en una imagen
+            var imageUrl = URL.createObjectURL(blob);
+            document.getElementById("rum-P-Firma-Operador").innerHTML = '<img src="' + imageUrl + '" alt="Firma del operador">';
+        })
+        .catch(error => {
+            console.error('Error al obtener la firma:', error.message);
+        });
+}
+
 
         // Función para cargar la firma desde el servidor
 function cargarFirma(firmaBase64) {

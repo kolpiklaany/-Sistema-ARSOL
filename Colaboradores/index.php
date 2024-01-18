@@ -23,7 +23,7 @@
     <!--     HEADER -->
     <header class="col-Header">
         <div class="col-Header-Left">
-            <a href="#" class="col-Button-Link">
+            <a href="/INNDAKA/MODULOS" class="col-Button-Link">
                 <img src="imgs/grupoArsol.png" alt="Logo">
             </a>
             <p id="col-Bienvenida-header"> Bienvenida <b>Marta Caballero</b></p>
@@ -256,6 +256,11 @@
                         id="col-Input-Correo-Empresarial" required>
                     </div>
                     <div class="input-with-label">
+                        <label for="col-Input-Fecha-Actualizacion-Salario">Fecha de actualizacion salarial</label>
+                        <input type="date" placeholder="Salario Actualizado fecha" name="fecha_Firma_Salario"
+                            id="col-Input-Fecha-Firma-Salario">
+                    </div>
+                    <div class="input-with-label">
                         <label for="col-Input-Salario-Mensual">Salario Mensual</label>
                         <input type="text" placeholder="Salario Mensual" name="salario-Mensual"
                         id="col-Input-Salario-Mensual" required>
@@ -363,6 +368,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("uploadedImage").value = datos.archivo;
         document.getElementById("col-Input-Fecha-Firma-Inicial").value = datos.fecha_firma_inicial;
         document.getElementById("col-Input-Fecha-Firma-Final").value = datos.fecha_firma_final;
+        document.getElementById("col-Input-Fecha-Firma-Salario").value = datos.fecha_Firma_Salario;
+
+
 
        // Muestra la imagen
         // Muestra la imagen

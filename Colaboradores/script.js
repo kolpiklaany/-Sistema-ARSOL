@@ -108,10 +108,6 @@ document.getElementById('colaboradorForm').addEventListener('submit', function(e
  
 
 
-
-
-
-
 function imprimir() {
     window.print();
   }
@@ -146,7 +142,6 @@ function imprimir() {
             }
         });
     });
-
 
 
 
@@ -202,11 +197,12 @@ function imprimir() {
                     document.getElementById('col_Input_no_infonavit').value = data['no_infonavit'] || '';
                     document.getElementById('nota').value = data['nota'] || '';
                     document.getElementById('col-Input-Estado_actOn').value = data['estado_registro'] || '';
+                    document.getElementById('col-Input-Fecha-Firma-Salario').value = data['fecha_Firma_Salario'] || '';
+
                     // Repite para todos los campos necesarios
-
-
+    
                     const uploadedImage = document.getElementById('uploadedImage');
-
+    
                     if (data['archivo']) {
                         uploadedImage.src = data['archivo'];
                         uploadedImage.style.display = 'block'; // Mostrar la imagen
@@ -214,7 +210,7 @@ function imprimir() {
                         uploadedImage.src = '';
                         uploadedImage.style.display = 'none'; // Ocultar la imagen
                     }
-                    
+    
                 } else {
                     console.log('No se encontraron resultados para la búsqueda.');
                 }

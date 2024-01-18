@@ -24,15 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (file_put_contents($rutaCompleta, $firmaBinaria) !== false) {
         // Opcional: Guarda la ruta de la firma en la base de datos
         if (guardarRutaFirmaEnBD($rutaCompleta)) {
-            echo json_encode(array("rutaFirma" => $rutaCompleta));
+            echo json_encode(['success' => true, 'rutaFirma' => $rutaCompleta]);
         } else {
-            echo json_encode(array("error" => "Error al guardar en la base de datos"));
+            echo json_encode(['error' => 'Error al guardar en la base de datos']);
         }
     } else {
-        echo json_encode(array("error" => "Error al guardar la firma en el servidor"));
+        echo json_encode(['error' => 'Error al guardar la firma en el servidor']);
     }
 } else {
-    echo json_encode(array("error" => "Método de solicitud no válido"));
+    echo json_encode(['error' => 'Método de solicitud no válido']);
 }
 
 // Función para guardar la ruta de la firma en la base de datos

@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $empresa = $_POST['empresa'] ?? '';
     $telefonoEmpresarial = $_POST['telefono-Empresarial'] ?? '';
     $correoEmpresarial = $_POST['correo-Empresarial'] ?? '';
+    $fechaFirmaSalario = $_POST['fecha_Firma_Salario'] ?? '';
     $salarioMensual = $_POST['salario-Mensual'] ?? '';
     $base = $_POST['base'] ?? '';
     $ubicacion = $_POST['ubicacion'] ?? '';
@@ -55,45 +56,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fechaNacimiento = date("Y-m-d", strtotime($_POST['fecha_nacimiento'] ?? ''));
     $fechaFirmaInicial = date("Y-m-d", strtotime($_POST['fecha-Firma-Inicial'] ?? ''));
     $fechaFirmaFinal = date("Y-m-d", strtotime($_POST['fecha-Firma-Final'] ?? ''));
+    $fechaFirmaSalario = date("Y-m-d", strtotime($_POST['fecha_Firma_Salario'] ?? '')); // Modificación aquí
     $archivo = $_FILES['archivo'] ?? '';
 
-     if ($_FILES['archivo']) {
+    if ($_FILES['archivo']) {
         // ... (tu código anterior)
     
         // Ruta donde se guardará el archivo en el servidor
-        $ruta_destino = '/Colaboradores/archivos_subidos/' . $archivo['name'];
-            
+        $ruta_destino = '/INNDAKA/Colaboradores/archivos_subidos/' . $archivo['name'];
+
         // Mover el archivo a la ruta especificada
         move_uploaded_file($archivo['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $ruta_destino);
     
         // Guardar la ruta del archivo en la variable $archivo_bd para usarla en la consulta SQL
         $archivo_bd = $ruta_destino; // Esta sería la ruta que guardarías en la base de datos
     }
-    
-
-    /* if ($_FILES['archivo']) {
-        $archivo = $_FILES['archivo'];
-        
-        // Obtener el contenido del archivo en Base64
-        $archivo_base64 = base64_encode(file_get_contents($archivo['tmp_name']));
-        
-        // Guardar la representación Base64 del archivo en la variable $archivo_bd para usarla en la consulta SQL
-        $archivo_bd = $archivo_base64; // Esta sería la representación Base64 que guardarías en la base de datos
-    } 
-     */
-    
 
     // Preparar la consulta SQL para insertar los datos en la tabla 'datos_personales'
     $sql = "INSERT INTO datos_personales (titulo, profesion, nombres, apellido_paterno, apellido_materno,
     fecha_nacimiento, curp, rfc, nss, telefono, correo, hijos, no_cuenta, estado_civil, licencia_conducir,
     certificado_medico, sexo, tipo_sangre, cp, calle_numero, colonia, ciudad, estado, fecha_firma_inicial,
     puesto, empresa, telefono_empresarial, correo_empresarial, salario_mensual, base, ubicacion, fecha_firma_final,
-    motivo_baja, archivo, no_infonavit, nota, estado_registro)
+    motivo_baja, archivo, no_infonavit, nota, estado_registro, fecha_firma_salario)
     VALUES ('$titulo', '$profesion', '$nombres', '$apellidoPaterno', '$apellidoMaterno', '$fechaNacimiento',
     '$curp', '$rfc', '$nss', '$telefono', '$correo', '$hijos', '$noCuenta', '$estadoCivil', '$licenciaConducir',
     '$certificadoMedico', '$sexo', '$tipoSangre', '$cp', '$calleNumero', '$colonia', '$ciudad', '$estado',
     '$fechaFirmaInicial', '$puesto', '$empresa', '$telefonoEmpresarial', '$correoEmpresarial', '$salarioMensual',
-    '$base', '$ubicacion', '$fechaFirmaFinal', '$motivoBaja', '$archivo_bd', '$infonavit', '$nota', '$estadoRegistro')";
+    '$base', '$ubicacion', '$fechaFirmaFinal', '$motivoBaja', '$archivo_bd', '$infonavit', '$nota', '$estadoRegistro', '$fechaFirmaSalario')";
     
 
     // Ejecutar la consulta y verificar si se realizó correctamente

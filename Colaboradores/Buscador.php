@@ -27,6 +27,9 @@
 
 <section class="principal">
 	<div class="formulario">
+    <button class="BtnExcel" id="BtnExportarExcel" onclick="exportarExcel()">
+            <i class="fa fa-file-excel-o"></i>
+        </button>
     <button id="BtnAgregar" onclick="redireccionar()">Agregar</button>
     <script>
     function redireccionar() {

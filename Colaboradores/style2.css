@@ -112,6 +112,41 @@ body {
  #BtnAgregar:active {
      background-color: #FF2323;
  }
+ #BtnAgregar{
+    font-size: 14px;
+    height: 32px;
+    width: 5%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #FF8888;
+    border: 2px solid rgb(0, 0, 0);
+ }
+ #BtnAgregar:hover {
+     background-color: #FF5555;
+ }
+ 
+ #BtnAgregar:active {
+     background-color: #FF2323;
+ }
+
+ .BtnExcel{
+    margin-right: 10px;
+    font-size: 14px;
+    height: 32px;
+    width: 5%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: lightgreen;
+    border: 2px solid rgb(0, 0, 0);
+ }
+
+ .BtnExcel:hover {
+    background-color: lime;
+}
+
+.BtnExcel:active {
+    background-color: lightseagreen;
+}
 
 table {
     margin: auto;
@@ -171,24 +206,26 @@ table td {
 }
 
 .tabla_datos tbody tr:nth-child(odd) td {
-    background-color: #fff4f4;
+  
 }
 .tabla_datos tbody tr:hover td {
-    background-color: #FF5555;
-    border-color: #FF5555;
+    background: #58C104;
+  
 }
 
 /* Table Footer */
 .tabla_datos tfoot th {
-    background-color: #e5f5ff;
+    background: black;
     text-align: right;
 }
 .tabla_datos tfoot th:first-child {
     text-align: left;
+    background: black;
+    
 }
 .tabla_datos tbody td:empty
 {
-    background-color: #ffcccc;
+    background: black;
 }
 
 

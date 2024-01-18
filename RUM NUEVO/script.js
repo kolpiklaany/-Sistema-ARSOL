@@ -191,7 +191,7 @@ document.querySelector('.rum-Firma-Operador').addEventListener('click', function
 
 
 function buscarInformacion() {
-  var buscar = document.getElementById('col-Input-Buscar').value;
+  var buscar = document.getElementById('rum-Input-Buscar').value;
   
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'buscar_RUM.php', true);
@@ -573,34 +573,6 @@ var idCaptura = 46/* tu lógica para obtener el ID de la captura */;
 mostrarImagen(idCaptura);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* -----------------------------------MODAL---------------------------------------------*/
 function toggleModal() {
   var modalOverlay = document.getElementById('modalOverlay');
@@ -755,6 +727,19 @@ function enviarFormulario(event) {
   // Cerrar la ventana modal u realizar otras acciones después de enviar el formulario
   toggleModal();
 }
+
+
+
+
+
+/* 
+-------------------IMPRIMIR----------------------------- */
+
+function imprimirPagina() {
+  // Utiliza el método print() para imprimir la página actual
+  window.print();
+}
+
 
 
 

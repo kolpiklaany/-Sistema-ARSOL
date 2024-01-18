@@ -11,16 +11,18 @@ if ($conn->connect_error) {
 
 $salida = "";
 
-$query = "SELECT CONCAT('/Colaboradores/archivos_subidos/', archivo) 
+$query = "SELECT id, CONCAT('/Colaboradores/archivos_subidos/', archivo) 
 AS titulo, profesion, rfc,fecha_nacimiento, curp, no_infonavit, nss, 
 correo, hijos, no_cuenta, estado_civil, licencia_conducir, certificado_medico, cp, 
 calle_numero, colonia, ciudad, estado, base, correo_empresarial, estado_registro, 
-nota, motivo_baja, sexo, archivo, fecha_firma_inicial, fecha_firma_final, 
+nota, motivo_baja, sexo, archivo, fecha_firma_inicial, fecha_firma_final, fecha_Firma_Salario, 
 datos_personales.* FROM datos_personales";
+
+$whereClause = "(estado_registro = 'activo' OR estado_registro = 'inactivo')";
 
 if (isset($_POST['consulta'])) {
     $q = $conn->real_escape_string($_POST['consulta']);
-    $query .= " WHERE 
+    $whereClause .= " AND (
         nombres LIKE '%" . $q . "%' OR
         apellido_paterno LIKE '%" . $q . "%' OR
         apellido_materno LIKE '%" . $q . "%' OR
@@ -30,8 +32,11 @@ if (isset($_POST['consulta'])) {
         empresa LIKE '%" . $q . "%' OR
         telefono_empresarial LIKE '%" . $q . "%' OR
         ubicacion LIKE '%" . $q . "%' OR
-        salario_mensual LIKE '%" . $q . "%'";
+        salario_mensual LIKE '%" . $q . "%'
+    )";
 }
+
+$query .= " WHERE " . $whereClause . " ORDER BY id DESC";
 
 $resultado = $conn->query($query);
 
@@ -40,21 +45,24 @@ if ($resultado->num_rows > 0) {
         <thead>
             <tr id='titulo'>
                 <td>Nombre</td>
-                <td>Apellido paterno</td>
-                <td>Apellido materno</td>
+                <td>Ap paterno</td>
+                <td>Ap materno</td>
                 <td>Teléfono</td>
                 <td>Tipo-sangre</td>
                 <td>Puesto</td>
                 <td>Empresa</td>
                 <td>Tel. empresarial</td>
                 <td>Ubicacion</td>
+                <td>Actualizacion de Salario</td>
                 <td>Salario mensual</td>
+                <td>Estatus</td>
             </tr>
         </thead>
         <tbody>";
 
     while ($fila = $resultado->fetch_assoc()) {
-        $salida .= "<tr id='fila-{$fila['id']}' onclick='redireccionarConDatos(\"{$fila['nombres']}\", \"{$fila['apellido_paterno']}\", \"{$fila['apellido_materno']}\",\"{$fila['telefono']}\", \"{$fila['tipo_sangre']}\", \"{$fila['puesto']}\", \"{$fila['empresa']}\", \"{$fila['telefono_empresarial']}\", \"{$fila['ubicacion']}\", \"{$fila['salario_mensual']}\", \"{$fila['titulo']}\", \"{$fila['profesion']}\",\"{$fila['rfc']}\",\"{$fila['fecha_nacimiento']}\",\"{$fila['curp']}\",\"{$fila['no_infonavit']}\",\"{$fila['nss']}\",\"{$fila['correo']}\",\"{$fila['hijos']}\",\"{$fila['no_cuenta']}\",\"{$fila['estado_civil']}\",\"{$fila['licencia_conducir']}\",\"{$fila['certificado_medico']}\",\"{$fila['cp']}\",\"{$fila['calle_numero']}\",\"{$fila['colonia']}\",\"{$fila['ciudad']}\",\"{$fila['estado']}\",\"{$fila['base']}\",\"{$fila['correo_empresarial']}\",\"{$fila['estado_registro']}\",\"{$fila['nota']}\",\"{$fila['motivo_baja']}\",\"{$fila['sexo']}\",\"{$fila['archivo']}\",\"{$fila['fecha_firma_inicial']}\",\"{$fila['fecha_firma_final']}\")'>  
+        $estatusColor = ($fila['estado_registro'] == 'activo') ? 'lightgreen' : 'lightcoral';
+        $salida .= "<tr id='fila-{$fila['id']}' style='background-color:{$estatusColor};' onclick='redireccionarConDatos(\"{$fila['nombres']}\", \"{$fila['apellido_paterno']}\", \"{$fila['apellido_materno']}\",\"{$fila['telefono']}\", \"{$fila['tipo_sangre']}\", \"{$fila['puesto']}\", \"{$fila['empresa']}\", \"{$fila['telefono_empresarial']}\", \"{$fila['ubicacion']}\", \"{$fila['salario_mensual']}\", \"{$fila['titulo']}\", \"{$fila['profesion']}\",\"{$fila['rfc']}\",\"{$fila['fecha_nacimiento']}\",\"{$fila['curp']}\",\"{$fila['no_infonavit']}\",\"{$fila['nss']}\",\"{$fila['correo']}\",\"{$fila['hijos']}\",\"{$fila['no_cuenta']}\",\"{$fila['estado_civil']}\",\"{$fila['licencia_conducir']}\",\"{$fila['certificado_medico']}\",\"{$fila['cp']}\",\"{$fila['calle_numero']}\",\"{$fila['colonia']}\",\"{$fila['ciudad']}\",\"{$fila['estado']}\",\"{$fila['base']}\",\"{$fila['correo_empresarial']}\",\"{$fila['estado_registro']}\",\"{$fila['nota']}\",\"{$fila['motivo_baja']}\",\"{$fila['sexo']}\",\"{$fila['archivo']}\",\"{$fila['fecha_firma_inicial']}\",\"{$fila['fecha_firma_final']}\",\"{$fila['fecha_Firma_Salario']}\",\"{$fila['fecha_Firma_Salario']}\",\"{$fila['estado_registro']}\")'>  
             <td>{$fila['nombres']}</td>
             <td>{$fila['apellido_paterno']}</td>
             <td>{$fila['apellido_materno']}</td>
@@ -64,7 +72,9 @@ if ($resultado->num_rows > 0) {
             <td>{$fila['empresa']}</td>
             <td>{$fila['telefono_empresarial']}</td>
             <td>{$fila['ubicacion']}</td>
+             <td>{$fila['fecha_Firma_Salario']}</td>
             <td>{$fila['salario_mensual']}</td>
+            <td>{$fila['estado_registro']}</td>
         </tr>";
     }
 
@@ -84,7 +94,7 @@ $conn->close();
     titulo, profesion,rfc,fecha_nacimiento,curp,no_infonavit,nss,correo,hijos,no_cuenta,
     estado_civil,licencia_conducir,certificado_medico,cp,calle_numero,colonia,ciudad,estado,
     base,correo_empresarial,estado_registro,nota,motivo_baja,sexo,archivo,
-    fecha_firma_inicial,fecha_firma_final) {
+    fecha_firma_inicial,fecha_firma_final,fecha_Firma_Salario) {
         const datos = {
             nombres: nombres,
             apellido_paterno: apellido_paterno,
@@ -122,7 +132,8 @@ $conn->close();
             sexo: sexo,
             archivo:archivo,
             fecha_firma_inicial:   fecha_firma_inicial,
-            fecha_firma_final:   fecha_firma_final
+            fecha_firma_final:   fecha_firma_final,
+            fecha_Firma_Salario: fecha_Firma_Salario
         };
 
         const params = new URLSearchParams();
