@@ -42,6 +42,7 @@ function initializeContainer(containerId, videoId, canvasId, imagenCapturadaId, 
       ubicacionElement.textContent = '';
       tomarFotoButton.style.display = 'none';
   });
+  
 
   tomarFotoButton.addEventListener('click', function(event) {
       event.preventDefault(); // Evita el comportamiento predeterminado del formulario
@@ -67,6 +68,12 @@ function initializeContainer(containerId, videoId, canvasId, imagenCapturadaId, 
           abrirCamaraButton.style.display = 'none';
           borrarFotoButton.style.display = 'block';
 
+          const horaActual = obtenerHoraActual();
+
+          document.getElementById('rum-Input-Encendido-Maquina').value = horaActual;
+
+          
+
           obtenerGeolocalizacionDescriptiva(ubicacionElement.id)
               .then(() => {})
               .catch((error) => {
@@ -74,6 +81,101 @@ function initializeContainer(containerId, videoId, canvasId, imagenCapturadaId, 
               });
       }
   });
+  function obtenerHoraActual() {
+    const fechaHoraActual = new Date();
+    const opciones = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+    return fechaHoraActual.toLocaleString('es-ES', opciones);
+}
+}
+
+
+
+function initializeContainer2(containerId, videoId, canvasId, imagenCapturadaId, fechaHoraId, abrirCamaraId, tomarFotoId, borrarFotoId, ubicacionId) {
+  let stream;
+  let videoElement = document.getElementById(videoId);
+  let canvas = document.getElementById(canvasId);
+  let imagenCapturadaDiv = document.getElementById(imagenCapturadaId);
+  let fechaHoraP = document.getElementById(fechaHoraId);
+  let abrirCamaraButton = document.getElementById(abrirCamaraId);
+  let borrarFotoButton = document.getElementById(borrarFotoId);
+  let ubicacionElement = document.getElementById(ubicacionId);
+  let tomarFotoButton = document.getElementById(tomarFotoId);
+
+  abrirCamaraButton.addEventListener('click', async function(event) {
+      event.preventDefault();
+
+      try {
+          stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+          videoElement.srcObject = stream;
+          videoElement.style.display = 'block';
+          abrirCamaraButton.style.display = 'none';
+          borrarFotoButton.style.display = 'none';
+          imagenCapturadaDiv.style.display = 'block';
+          fechaHoraP.textContent = '';
+          obtenerGeolocalizacionDescriptiva(ubicacionElement.id)
+              .then(() => {})
+              .catch((error) => {
+                  console.error("Error al obtener la ubicación: ", error);
+              });
+
+          tomarFotoButton.style.display = 'block';
+      } catch (error) {
+          console.error('Error al acceder a la cámara: ' + error);
+      }
+  });
+
+  borrarFotoButton.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      imagenCapturadaDiv.innerHTML = '';
+      fechaHoraP.textContent = '';
+      abrirCamaraButton.style.display = 'block';
+      borrarFotoButton.style.display = 'none';
+      ubicacionElement.textContent = '';
+      tomarFotoButton.style.display = 'none';
+  });
+
+  tomarFotoButton.addEventListener('click', async function(event) {
+      event.preventDefault();
+
+      if (stream) {
+          const timestamp = new Date().toLocaleString();
+          fechaHoraP.textContent = 'Imagen capturada el ' + timestamp;
+
+          canvas.width = videoElement.videoWidth;
+          canvas.height = videoElement.videoHeight;
+          canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+          const capturedImage = new Image();
+          capturedImage.src = canvas.toDataURL('image/jpeg');
+
+          imagenCapturadaDiv.innerHTML = '';
+          imagenCapturadaDiv.appendChild(capturedImage);
+          imagenCapturadaDiv.style.display = 'block';
+
+          const tracks = stream.getTracks();
+          tracks.forEach(track => track.stop());
+          videoElement.style.display = 'none';
+
+          abrirCamaraButton.style.display = 'none';
+          borrarFotoButton.style.display = 'block';
+
+          const horaActual = obtenerHoraActual();
+
+          document.getElementById('rum-Input-Apagado-Maquina').value = horaActual;
+
+          try {
+              await obtenerGeolocalizacionDescriptiva(ubicacionElement.id);
+          } catch (error) {
+              console.error("Error al obtener la ubicación: ", error);
+          }
+      }
+  });
+
+  function obtenerHoraActual() {
+      const fechaHoraActual = new Date();
+      const opciones = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+      return fechaHoraActual.toLocaleString('es-ES', opciones);
+  }
 }
 
 
@@ -81,7 +183,7 @@ function initializeContainer(containerId, videoId, canvasId, imagenCapturadaId, 
 initializeContainer('CONTENEDOR-IMAGEN', 'video', 'canvas', 'imagenCapturada', 'fechaHoraCaptura', 'abrirCamara', 'tomarFoto', 'borrarFoto', 'ubicacion');
 
 // Llamamos a la función para inicializar el contenedor 2
- initializeContainer('CONTENEDOR-IMAGEN-2', 'video-2', 'canvas-2', 'imagenCapturada-2', 'fechaHoraCaptura-2', 'abrirCamara-2', 'tomarFoto-2', 'borrarFoto-2', 'ubicacion-2');
+ initializeContainer2('CONTENEDOR-IMAGEN-2', 'video-2', 'canvas-2', 'imagenCapturada-2', 'fechaHoraCaptura-2', 'abrirCamara-2', 'tomarFoto-2', 'borrarFoto-2', 'ubicacion-2');
 
 // Llamamos a la función para inicializar el contenedor 3
 /* initializeContainer('CONTENEDOR-IMAGEN-3', 'video-3', 'canvas-3', 'imagenCapturada-3', 'fechaHoraCaptura-3', 'abrirCamara-3', 'tomarFoto-3', 'borrarFoto-3', 'ubicacion-3');
@@ -746,6 +848,28 @@ function imprimirPagina() {
 
 
 
+
+
+
+document.getElementById('tomarFoto').addEventListener('click', function() {
+  // Tomar la foto y realizar otras operaciones necesarias.
+
+  // Obtener la fecha y hora actual
+  var fechaHoraActual = new Date();
+  var formatoFechaHora = obtenerFormatoFechaHora(fechaHoraActual); // Puedes definir tu propio formato aquí
+
+  // Mostrar la fecha y hora en el elemento "fechaHora"
+  document.getElementById('fechaHora').innerText = formatoFechaHora;
+
+  // Asignar la fecha y hora al campo de entrada "rum-Input-Encendido-Maquina"
+  document.getElementById('rum-Input-Encendido-Maquina').value = formatoFechaHora;
+});
+
+function obtenerFormatoFechaHora(fecha) {
+  // Puedes personalizar el formato de fecha y hora según tus necesidades
+  var opciones = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+  return fecha.toLocaleString('es-ES', opciones);
+}
 
 
 

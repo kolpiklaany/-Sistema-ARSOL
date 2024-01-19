@@ -26,5 +26,5 @@ showSlides();
 
 document.getElementById('colaboradores-container').addEventListener('click', function() {
     // Redirigir al otro index (ajusta la URL según tu necesidad)
-    window.location.href = 'tu-otro-index.html';
+    window.location.href = '/INNDAKA/Colaboradores/Buscador.php';
 });

@@ -46,11 +46,9 @@ include 'guardar.php';
     </header>
 
     <div class="rum-Botones-Imprimir-Modal">
-        <button onclick="imprimirPagina()" id="rum-Btn-Imprimir">Imprimir Página</button>
+        <button id="rum-Imprimir-Btn" onclick="imprimirDatos()"><i class="fa fa-print"></i></button>
     
     </div>
-
-
 
     <div class="rum-Div-Padre">
         <form action="guardar.php" method="post" class="rum-Formulario-Padre" enctype="multipart/form-data">
@@ -150,7 +148,7 @@ include 'guardar.php';
                             </div>
                         </div>
 
-                        <div class="CONTENEDOR-IMAGEN-2">
+<!--                         <div class="CONTENEDOR-IMAGEN-2">
                             <div class="camera-container" id="container-2">
                                 <button id="abrirCamara-2">Tomar Foto</button>
                                 <video id="video-2" autoplay style="display: none;"></video>
@@ -164,7 +162,7 @@ include 'guardar.php';
                                 <p id="ubicacion-2">Ubicación: <span id="ubicacionInfo-2"></span></p>
                             </div>
                         </div>
-
+ -->
 
 
                         <!--  <div class="CONTENEDOR-IMAGEN-3" id="container-3">
@@ -310,6 +308,85 @@ include 'guardar.php';
 
                 </div>
             </div>
+
+            <div class="rum-Div-Odometro-Horometro">
+                <div class="rum-Odometro-Horometro-Dividir">
+                    <p id="rum-P-Title-Odometro-Horometro">Odometro y Horometro</p>
+
+                    
+                    <div class="CONTENEDORES-DE-IMAGENES">
+
+
+
+<!--                         <div class="CONTENEDOR-IMAGEN">
+                            <div class="camera-container" id="container-1">
+                                <button id="abrirCamara">Tomar Foto</button>
+                                <video id="video" autoplay style="display: none;"></video>
+                                <canvas id="canvas" style="display: none;"></canvas>
+                                <button id="tomarFoto" class="capture-button" style="display: none;">Capturar</button>
+                            </div>
+                            <div class="captura-info">
+                                <div id="imagenCapturada" style="display: none;"></div>
+                                <button id="borrarFoto">Tomar foto de nuevo</button>
+                                <button id="guardarFoto" style="display: none;">Guardar Foto</button>
+                                <p id="fechaHoraCaptura">Fecha y Hora de Captura: <span id="fechaHora"></span></p>
+                                <p id="ubicacion">Ubicación: <span id="ubicacionInfo"></span></p>
+                            </div>
+                        </div> -->
+
+                        <div class="CONTENEDOR-IMAGEN-2">
+                            <div class="camera-container" id="container-2">
+                                <button id="abrirCamara-2">Tomar Foto</button>
+                                <video id="video-2" autoplay style="display: none;"></video>
+                                <canvas id="canvas-2" style="display: none;"></canvas>
+                                <button id="tomarFoto-2" class="capture-button-2" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-2">
+                                <div id="imagenCapturada-2"></div>
+                                <button id="borrarFoto-2">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-2">Fecha y Hora de Captura: <span id="fechaHora-2"></span></p>
+                                <p id="ubicacion-2">Ubicación: <span id="ubicacionInfo-2"></span></p>
+                            </div>
+                        </div>
+
+
+
+                        <!--  <div class="CONTENEDOR-IMAGEN-3" id="container-3">
+                            <div class="camera-container" id="container-3">
+                                <button id="abrirCamara-3">Tomar Foto</button>
+                                <video id="video-3" autoplay style="display: none;"></video>
+                                <canvas id="canvas-3" style="display: none;"></canvas>
+                                <button id="tomarFoto-3" class="capture-button-3" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-3">
+                                <div id="imagenCapturada-3"></div>
+                                <button id="borrarFoto-3">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-3">Fecha y Hora de Captura: <span id="fechaHora-3"></span></p>
+                                <p id="ubicacion-3">Ubicación: <span id="ubicacionInfo-3"></span></p>
+                            </div>
+                        </div>
+                        <div class="CONTENEDOR-IMAGEN-4" id="container-4">
+                            <div class="camera-container" id="container-4">
+                                <button id="abrirCamara-4">Tomar Foto</button>
+                                <video id="video-4" autoplay style="display: none;"></video>
+                                <canvas id="canvas-4" style="display: none;"></canvas>
+                                <button id="tomarFoto-4" class="capture-button-4" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-4">
+                                <div id="imagenCapturada-4"></div>
+                                <button id="borrarFoto-4">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-4">Fecha y Hora de Captura: <span id="fechaHora-4"></span></p>
+                                <p id="ubicacion-4">Ubicación: <span id="ubicacionInfo-4"></span></p>
+                            </div>
+                        </div> 
+ -->
+
+                    </div>
+                </div>
+
+
+            </div>
+            
             <form id="firmaForm" action="guardarFirma.php" method="post">
                 <div class="rum-Div-Firmas">
                     <div class="rum-Firma-Operador" onclick="redireccionar('firmaDigital.php')">
@@ -376,8 +453,88 @@ include 'guardar.php';
     <!-- ... (código existente) ... -->
 
     <!-- -------------------------------------------------------------- -->
+   
+  <script>
+    function imprimirDatos() {
+            // Recopilar datos del formulario
+            const datos = {
+                Nombre_Operador: document.getElementById("rum-Input-Nombre-Operador").value,
+                No_Empleado: document.getElementById("rum-Input-No-Empleado").value,
+                Fecha: document.getElementById("rum-Input-Fecha").value,
+                Nombre_economico: document.getElementById("rum-Input-Economico").value,
+                Tipo: document.getElementById("rum-Input-Tipo").value,
+                Modelo: document.getElementById("rum-Input-Modelo").value,     /* TE QUEDASTE EN MODELO ALAN CONTINUA CON RUM-DIV-DATOS-CONTROL*/
+                fecha_nacimiento: document.getElementById("col-Input-Fecha-Nacimiento").value,
+                curp: document.getElementById("col-Input-Curp").value,
+                no_infonavit: document.getElementById("col_Input_no_infonavit").value,
+                nss: document.getElementById("col-Input-Nss").value,
+                correo: document.getElementById("col-Input-Correo").value,
+                hijos: document.getElementById("col-Input-Hijos").value,
+                no_cuenta: document.getElementById("col-Input-Cuenta").value,
+                estado_civil: document.getElementById("col-Input-Estado-Civil").value,
+                licencia_conducir: document.getElementById("col-Input-Licencia-Conducir").value,
+                certificado_medico: document.getElementById("col-Input-Certificado-Medico").value,
+                telefono: document.getElementById("col-Input-Telefono").value,
+                tipo_sangre: document.getElementById("col-Input-Tipo-Sangre").value,
+                cp: document.getElementById("col-Input-Cp").value,
+                calle_numero: document.getElementById("col-Input-Calle-Numero").value,
+                colonia: document.getElementById("col-Input-Colonia").value,
+                ciudad: document.getElementById("col-Input-Ciudad").value,
+                estado: document.getElementById("col-Input-Estado").value,
+                base: document.getElementById("col-Input-Base").value,
+                puesto: document.getElementById("col-Input-Puesto").value,
+                empresa: document.getElementById("col-Input-Empresa").value,
+                telefono_empresarial: document.getElementById("col-Input-Telefono-Empresarial").value,
+                correo_empresarial: document.getElementById("col-Input-Correo-Empresarial").value,
+                ubicacion: document.getElementById("col-Input-Ubicacion").value,
+                salario_mensual: document.getElementById("col-Input-Salario-Mensual").value,
+                estado_registro: document.getElementById("col-Input-Estado_actOn").value,
+                nota: document.getElementById("nota").value,
+                estado_contratacion: document.getElementById("col-Input-Estado-Contratacion").value,
+                motivo_baja: document.getElementById("col-Input-Correo-Motivo-Baja").value,
+                sexo: document.getElementById("col-Input-Masculino").checked ? "Masculino" : "Femenino"
+                // Agrega el resto de los campos del formulario según sea necesario
+            };
 
 
+            
+          // Crear una tabla HTML para mostrar los datos
+          const encabezado = `<tr style="background-color:#FF8888 ; color: white; font-weight: bold;">
+                        <td style="border-left: 1px solid black; border-right: 1px solid black; padding: 1px; width: 50p">
+                            <img src="imgs/grupoArsol.png" alt="Logo" style="max-height: 70px;">
+                        </td>
+                        <td colspan="2" style="border-left: 1px solid black; border-right: 1px solid black; padding: 2px; text-align: center; color:#FF2323;">Datos del Operador</td>
+                    </tr>`;
+
+// Crear una tabla HTML para mostrar los datos
+let tablaHTML = '<table style="border-collapse: collapse; width: 100%; border: 1px solid black; page-break-inside: avoid; border-radius:6px;">';
+
+
+// Agregar el encabezado
+tablaHTML += encabezado;
+
+// Agregar los datos
+for (const key in datos) {
+    if (datos.hasOwnProperty(key)) {
+        tablaHTML += `<tr style="border: 1px solid black; page-break-inside: avoid;">
+                        <td style="border: 1px solid black; padding: 2px;"><strong>${key}</strong></td>
+                        <td style="border: 1px solid black; padding: 2px;">${datos[key]}</td>
+                    </tr>`;
+    }
+}
+
+tablaHTML += '</table>';
+
+
+    // Abrir una nueva ventana para mostrar la tabla e imprimir
+    const ventanaImpresion = window.open('', '_blank');
+    ventanaImpresion.document.write(tablaHTML);
+    ventanaImpresion.document.close();
+
+    // Imprimir la ventana
+    ventanaImpresion.print();
+        }
+   </script>
     <script src="tabla.js"></script>
     <script src="script.js"></script>
     

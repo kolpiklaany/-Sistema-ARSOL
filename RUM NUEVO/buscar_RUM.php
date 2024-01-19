@@ -19,9 +19,8 @@ $sql = "SELECT * FROM formulariodatos
         OR rum_economico LIKE '%$buscar%' OR tipo LIKE '%$buscar%' OR modelo LIKE '%$buscar%' 
         OR llegada_operador LIKE '%$buscar%' OR salida_operador LIKE '%$buscar%' OR encendido_maquina LIKE '%$buscar%' 
         OR apagado_maquina LIKE '%$buscar%' OR rum_tramo LIKE '%$buscar%' OR rum_subtramo LIKE '%$buscar%' 
-        OR margen LIKE '%$buscar%' OR valor_porcentaje LIKE '%$buscar%' OR causa LIKE '%$buscar%'";
-
-// ...
+        OR margen LIKE '%$buscar%' OR valor_porcentaje LIKE '%$buscar%' OR causa LIKE '%$buscar%'
+        ORDER BY id DESC LIMIT 1";
 
 $resultado = $conexion->query($sql);
 

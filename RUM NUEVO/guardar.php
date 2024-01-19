@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         // Redirigir a index.php después de guardar los datos
-        header("Location: /INNDAKA/RUM NUEVO/monitorista vista/index.php");
+        header("Location: /INNDAKA/RUM NUEVO/monitorista vista/index.html");
         exit(); // Asegura que no se ejecuten más instrucciones después de la redirección
     } catch(PDOException $e) {
         echo "Error al guardar los datos: " . $e->getMessage();

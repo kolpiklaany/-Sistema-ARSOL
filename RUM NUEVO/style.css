@@ -117,7 +117,7 @@ label {
     margin-bottom: 1.875rem;
 }
 
-#rum-Btn-Imprimir {
+#rum-Imprimir-Btn {
     margin-right: 0.625rem;
 }
 
@@ -125,8 +125,7 @@ label {
     margin-right: 0.625rem;
 }
 
-#rum-Btn-Imprimir,
-#rum-Btn-Modal {
+#rum-Imprimir-Btn {
     width: 10%;
     height: 4vh;
     border: 2px solid #030303;
@@ -137,13 +136,11 @@ label {
     margin-bottom: 20px;
 }
 
-#rum-Btn-Imprimir:hover,
-#rum-Btn-Modal:hover {
+#rum-Imprimir-Btn:hover {
     background: #FF5555;
 }
 
-#rum-Btn-Imprimir:active,
-#rum-Btn-Modal:active {
+#rum-Imprimir-Btn:active {
     background: #FF2323;
 }
 
