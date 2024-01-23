@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+/* ESTRUCTURA COMPLETA DEL LOGIN */
+.div-padre{
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.div-padre-img{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    filter: blur(3px) brightness(60%);
+}
+
+.div-padre-img-arsol_logo{
+    height: 30%;
+    position: absolute;
+    z-index: 100;
+    top: 33%;
+    left: 40vh;
+}
+
+/* ESTRUCTURA DEL FORMULARIO */
+.div-formulario-login {
+    width: 33.33%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Color blanco con opacidad del 50% */
+}
+
+
+
+/* FORMULARIO */
+
+.div-formulario-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.btn-entrar{
+    width: 100%;
+    height: 20%;
+    border-radius: 30px;
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
+.btn-entrar:hover{
+    width: 100%;
+    height: 20%;
+    border-radius: 30px;
+    background-color: lightpink;
+    cursor: pointer;
+}
+
+.div-formulario-login-titulo{
+    margin-left: 50px;
+    font-size: 50px;
+}
+
+.div-form-inf{
+    padding: 20px;
+    width: 80%;
+}
+
+.input-group-name,
+.input-group-password{
+    width: 100%;
+    height: 50px;
+    color: #000;
+}
+
+
+.input-group {
+    margin-bottom: 15px; /* Agrega margen inferior entre los grupos de inputs */
+}
+
+.input-group input,
+.input-group label {
+    margin-bottom: 10px; /* Agrega margen inferior a los elementos del grupo */
+}
+
+.btn-entrar {
+    margin-top: 15px; /* Agrega margen superior al botón */
+}
+
+.div-olvidaste-password{
+    margin-top: 80px;
+}
+

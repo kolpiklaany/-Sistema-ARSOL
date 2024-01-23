@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="imgs/arsol.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de utilización de Maquinaria</title>
+
+
+
+</head>
+
+<body>
+    <!--  HEADER -->
+    <header class="rum-Header">
+        <div class="rum-Header-Left">
+            <a href="#" class="rum-Button-Link">
+                <img src="imgs/arsol.jpg" alt="Logo">
+            </a>
+            <p id="rum-Bienvenida-header"> Bienvenida <b>Marta Caballero</b></p>
+        </div>
+        <div class="rum-Header-Center">
+            <h1>RUM</h1>
+        </div>
+        <div class="rum-Header-Right">
+            <!-- -------------------------------------------------------------- -->
+            <!--   <form action="buscar_RUM.php" method="post"> -->
+            <input type="text" placeholder="Buscar..." name="buscador" id="rum-Input-Buscar">
+            <button type="submit" onclick="buscarInformacion()"><i class="fa fa-search"></i></button>
+            <!--   </form> -->
+            <!-- -------------------------------------------------------------- -->
+
+        </div>
+    </header>
+
+    <div class="rum-Botones-Imprimir-Modal">
+        <button type="submit" onclick="imprimirDatos()" id="rum-Btn-Imprimir">Imprimir</button>
+
+
+    </div>
+
+
+
+    <div class="rum-Div-Padre">
+        <form action="guardar.php" method="post" class="rum-Formulario-Padre" enctype="multipart/form-data">
+            <div class="rum-Datos-Generales-Maquina-Vehiculo">
+                <div class="rum-Datos-Generales">
+                    <div class="rum-Datos-Generales-Dividir">
+                        <p id="rum-P-Title-Datos-Generales">Datos Generales</p>
+                        <div class="rum-Div-Datos-Generales-Centro">
+                            <div class="rum-Div-Contenido-1">
+                                <label for="rum-Input-Nombre-Operador">Nombre del operador</label>
+                                <input type="text" name="nombre-operador" id="rum-Input-Nombre-Operador"
+                                    placeholder="Ej. Jos&eacute; Razo Prieto" readonly>
+                            </div>
+                            <div class="rum-Div-Contenido-2">
+                                <label for="rum-Input-No-Empleado">No. de empleado</label>
+                                <input type="text" name="rum-no-empleado" id="rum-Input-No-Empleado"
+                                    placeholder="Ej. 123456" readonly>
+                            </div>
+                            <div class="rum-Div-Contenido-3">
+                                <label for="">Fecha</label>
+                                <input type="date" name="rum-fecha" id="rum-Input-Fecha" placeholder="Ej. 12/12/1993"
+                                    readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rum-Datos-Maquina-Vehiculos">
+                    <div class="rum-Datos-Maquina-Vehiculos-Dividir">
+                        <p id="rum-P-Title-Datos-Maquina-Vehiculo">Datos de la maquina y/o vehiculo</p>
+                        <div class="rum-Div-Datos-Maquina-Vehiculo-Centro">
+                            <div class="rum-Div-Contenido-4">
+                                <label for="">Nombre Economico </label>
+                                <input type="text" name="rum_economico" id="rum-Input-Economico"
+                                    placeholder="Ej. EQ-250" readonly>
+                            </div>
+                            <div class="rum-Div-Contenido-5">
+                                <label for="">Tipo</label>
+                                <input type="text" name="rum-tipo" id="rum-Input-Tipo" placeholder="Ej. Gr&uacute;a"
+                                    readonly>
+                            </div>
+                            <div class="rum-Div-Contenido-6">
+                                <label for="">Modelo</label>
+                                <input type="text" name="rum-modelo" id="rum-Input-Modelo" placeholder="Ej. Modelo"
+                                    readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rum-Div-Datos-Control">
+                <div class="rum-Datos-Control-Dividir">
+                    <p id="rum-P-Title-Datos-Control">Datos de Control</p>
+                    <div class="rum-Div-Datos-Control-Centro">
+                        <div class="rum-Div-Contenido-7">
+                            <label for="">Llegada del operador</label>
+                            <input type="text" name="rum-llegada-operador" id="rum-Input-llegada-operador"
+                                placeholder="Ej. 9:00PM..">
+                        </div>
+                        <div class="rum-Div-Contenido-8">
+                            <label for="">Salida del operador</label>
+                            <input type="text" name="rum-salida-operador" id="rum-Input-Salida-Operador"
+                                placeholder="Ej. 6:00PM..">
+                        </div>
+                       
+                    </div>
+                    <div class="rum-Div-Encendido">
+                        <div class="rum-Div-Contenido-9-Encendido">
+                            <label for="">Encendido maquina</label>
+                            <input type="text" name="rum-encendido-maquina" id="rum-Input-Encendido-Maquina"
+                                placeholder="Ej. 9:30AM.." readonly>
+                        </div>
+                        <div class="rum-Div-Contenido-10-Fecha">
+                            <label for="">Fecha</label>
+                            <input type="datetime" name="rum-fecha" id="rum-Input-Fecha-Foto"
+                                placeholder="Ej. 9:30AM.." readonly>
+                        </div>
+                        <div class="rum-Div-Contenido-11-Ubicacion">
+                            <label for="">Ubicación</label>
+                            <input type="text" name="rum-ubicacion-Foto" id="rum-Input-ubicacion-Foto"
+                                placeholder=" Ubicación" readonly>
+                        </div>
+                    </div>
+                    <div class="rum-Div-Apagado">
+                        <div class="rum-Div-Contenido-9-Apagado">
+                            <label for="">Apagado maquina</label>
+                            <input type="text" name="rum-apagado-maquina" id="rum-Input-Apagado-Maquina"
+                                placeholder="Ej. 9:30AM.." readonly>
+                        </div>
+                        <div class="rum-Div-Contenido-10-Fecha-Apagado">
+                            <label for="">Fecha</label>
+                            <input type="text" name="rum-fecha-2" id="rum-Input-Fecha-Foto-2"
+                                placeholder="Ej. 9:30AM.." readonly>
+                        </div>
+                        <div class="rum-Div-Contenido-11-Ubicacion-Apagado">
+                            <label for="">Ubicación</label>
+                            <input type="text" name="rum-ubicacion-Foto-2" id="rum-Input-ubicacion-Foto-2"
+                                placeholder="Ej. 9:30AM.." readonly>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="rum-Div-Odometro-Horometro">
+                <div class="rum-Odometro-Horometro-Dividir">
+                    <p id="rum-P-Title-Odometro-Horometro">Odometro y Horometro</p>
+                    <div class="CONTENEDORES-DE-IMAGENES">
+
+
+
+                        <div class="CONTENEDOR-IMAGEN">
+                            <div class="camera-container" id="container-1">
+                                <button id="abrirCamara">Tomar Foto</button>
+                                <video id="video" autoplay style="display: none;"></video>
+                                <canvas id="canvas" style="display: none;"></canvas>
+                                <button id="tomarFoto" class="capture-button" style="display: none;">Capturar</button>
+                            </div>
+                            <div class="captura-info">
+                                <div id="imagenCapturada" style="display: none;"></div>
+                                <button id="borrarFoto">Tomar foto de nuevo</button>
+                                <button id="guardarFoto" style="display: none;">Guardar Foto</button>
+                                <p id="fechaHoraCaptura">Fecha y Hora de Captura: <span id="fechaHora"></span></p>
+                                <p id="ubicacion">Ubicación: <span id="ubicacionInfo"></span></p>
+                            </div>
+                        </div>
+
+                        <!--                         <div class="CONTENEDOR-IMAGEN-2">
+                            <div class="camera-container" id="container-2">
+                                <button id="abrirCamara-2">Tomar Foto</button>
+                                <video id="video-2" autoplay style="display: none;"></video>
+                                <canvas id="canvas-2" style="display: none;"></canvas>
+                                <button id="tomarFoto-2" class="capture-button-2" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-2">
+                                <div id="imagenCapturada-2"></div>
+                                <button id="borrarFoto-2">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-2">Fecha y Hora de Captura: <span id="fechaHora-2"></span></p>
+                                <p id="ubicacion-2">Ubicación: <span id="ubicacionInfo-2"></span></p>
+                            </div>
+                        </div>
+ -->
+
+
+                        <!--  <div class="CONTENEDOR-IMAGEN-3" id="container-3">
+                            <div class="camera-container" id="container-3">
+                                <button id="abrirCamara-3">Tomar Foto</button>
+                                <video id="video-3" autoplay style="display: none;"></video>
+                                <canvas id="canvas-3" style="display: none;"></canvas>
+                                <button id="tomarFoto-3" class="capture-button-3" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-3">
+                                <div id="imagenCapturada-3"></div>
+                                <button id="borrarFoto-3">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-3">Fecha y Hora de Captura: <span id="fechaHora-3"></span></p>
+                                <p id="ubicacion-3">Ubicación: <span id="ubicacionInfo-3"></span></p>
+                            </div>
+                        </div>
+                        <div class="CONTENEDOR-IMAGEN-4" id="container-4">
+                            <div class="camera-container" id="container-4">
+                                <button id="abrirCamara-4">Tomar Foto</button>
+                                <video id="video-4" autoplay style="display: none;"></video>
+                                <canvas id="canvas-4" style="display: none;"></canvas>
+                                <button id="tomarFoto-4" class="capture-button-4" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-4">
+                                <div id="imagenCapturada-4"></div>
+                                <button id="borrarFoto-4">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-4">Fecha y Hora de Captura: <span id="fechaHora-4"></span></p>
+                                <p id="ubicacion-4">Ubicación: <span id="ubicacionInfo-4"></span></p>
+                            </div>
+                        </div> 
+ -->
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="rum-Div-Control-Actividades-Horas-Campo">
+                <div class="rum-Control-Actividades-Horas-Campo-Dividir">
+                    <p id="rum-P-Title-Actividades-Horas-Campo">Control de actividades y horas en campo</p>
+                </div>
+                <table id="actividadesTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Descripción de la actividad</th>
+                            <th>Hora de inicio de trabajo</th>
+                            <th>Hora de término de trabajo</th>
+                            <th>Combustible</th>
+                            <th>Horas efectivas</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se agregarán las filas dinámicamente -->
+                    </tbody>
+                </table>
+
+                <a href="#" id="addRowLink">Agregar Actividad</a>
+            </div>
+            <div class="rum-Div-Ubicacion-Trabajos-Reporte-Fallas">
+                <div class="rum-Ubicacion-Trabajos-Reporte-Fallas-Dividir">
+                    <p id="rum-P-Title-Ubicacion-Trabajos-Reporte-Fallas">Ubicaci&oacute;n de los trabajos y/o reporte
+                        de fallas</p>
+                </div>
+                <div class="rum-Div-Tramo-Subtramo-Margen-Centro">
+                    <div class="rum-Div-Contenido-11">
+                        <label for="">Tramo</label>
+                        <input type="text" name="rum_tramo" id="rum-Input-Tramo" placeholder="Ej. Salamanca" readonly>
+                    </div>
+                    <div class="rum-Div-Contenido-12">
+                        <label for="">Subtramo</label>
+                        <input type="text" name="rum_subtramo" id="rum-Input-Subtramo" placeholder="Ej. Jose Chaves"
+                            readonly>
+                    </div>
+                    <div class="rum-Div-Contenido-13">
+                        <label for="">Frente</label>
+                        <input type="text" name="rum_apagado_margen" id="rum-Input-Apagado-Margen"
+                            placeholder="Ej. Dolores Hidalgo">
+                    </div>
+                </div>
+                <div class="rum-Div-Rendimiento-Operatividad-Causa">
+                    <div class="rum-Div-Contenido-14">
+                        <div class="rum-Div-Rendimiento-Operatividad-Causa-Dividir">
+                            <p id="rum-P-Title-Rendimiento-Operatividad-Causa">% de rendimiento y/o operatividad de la
+                                maquina</p>
+                            <div class="rum-Rendimiento-Operatividad-Causa-Dividir-Centro" id="rum-porcentaje">
+                                <div>
+                                    <input type="radio" id="circle10" name="valor_porcentaje" value="10">
+                                    <label for="circle1">10%</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="circle20" name="valor_porcentaje" value="20">
+                                    <label for="circle1">20%</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="circle30" name="valor_porcentaje" value="30">
+                                    <label for="circle1">30%</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="circle40" name="valor_porcentaje" value="40">
+                                    <label for="circle1">40%</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="circle50" name="valor_porcentaje" value="50">
+                                    <label for="circle1">50%</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="circle60" name="valor_porcentaje" value="60">
+                                    <label for="circle1">60%</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="circle70" name="valor_porcentaje" value="70">
+                                    <label for="circle1">70%</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="circle80" name="valor_porcentaje" value="80">
+                                    <label for="circle1">80%</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="circle90" name="valor_porcentaje" value="90">
+                                    <label for="circle1">90%</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="circle100" name="valor_porcentaje" value="100">
+                                    <label for="circle1">100%</label>
+                                </div>
+
+                                <!-- Repite estos elementos para los 10 círculos -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rum-Div-Contenido-15">
+                        <label for="">Causa</label>
+                        <input type="text" name="rum_causa" id="rum-Input-Causa"
+                            placeholder="Ej. Se encontraron diferentes errores......">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="rum-Div-Odometro-Horometro">
+                <div class="rum-Odometro-Horometro-Dividir">
+                    <p id="rum-P-Title-Odometro-Horometro">Odometro y Horometro</p>
+                    <div class="CONTENEDORES-DE-IMAGENES">
+                        <div class="CONTENEDOR-IMAGEN-2">
+                            <div class="camera-container" id="container-2">
+                                <button id="abrirCamara-2">Tomar Foto</button>
+                                <video id="video-2" autoplay style="display: none;"></video>
+                                <canvas id="canvas-2" style="display: none;"></canvas>
+                                <button id="tomarFoto-2" class="capture-button-2" style="display: none;"></button>
+                            </div>
+                            <div class="captura-info-2">
+                                <div id="imagenCapturada-2"></div>
+                                <button id="borrarFoto-2">Tomar foto de nuevo</button>
+                                <p id="fechaHoraCaptura-2">Fecha y Hora de Captura: <span id="fechaHora-2"></span></p>
+                                <p id="ubicacion-2">Ubicación: <span id="ubicacionInfo-2"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="firmaForm" action="guardarFirma.php" method="post">
+                <div class="rum-Div-Firmas">
+                    <div class="rum-Firma-Operador" onclick="redireccionar('firmaDigital.php')">
+                        <p id="rum-P-Firma-Operador">Firma del operador</p>
+                    </div>
+                    <div class="rum-Firma-Lider-Proyecto" onclick="redireccionar('firmaDigital.php')">
+                        <p id="rum-P-Firma-Lider-Proyecto">Firma del líder de proyecto</p>
+                    </div>
+                    <div class="rum-Firma-Cliente" onclick="redireccionar('firmaDigital.php')">
+                        <p id="rum-P-Firma-Cliente">Firma del cliente</p>
+                    </div>
+                </div>
+                <div class="rum-Div-Botones">
+                    <button id="rum-Btn-Limpiar">Limpiar</button>
+                    <button type="submit" name="guardar" id="rum-Btn-Guardar">Guardar</button>
+                </div>
+                <input type="hidden" name="firmaBase64" id="firmaBase64" value="">
+            </form>
+        </form>
+
+        </form>
+    </div>
+
+
+
+
+    <!-- ---------------------------VENTANA MODAL----------------------------------- -->
+
+    <!-- ... (código existente) ... -->
+    <!--  <form id="miFormulario" onsubmit="enviarFormulario(event)">
+        <input type="hidden" id="user_id" name="user_id" value="ID_DEL_USUARIO_ACTUAL">
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <span class="close-btn" onclick="toggleModal()">&times;</span>
+
+               
+                <form id="miFormulario" onsubmit="enviarFormulario(event)">
+                    <label for="actividad">Descripción de la actividad:</label>
+                    <input type="text" id="actividad" name="descripcion_actividad" required>
+
+                    <label for="inicio_trabajo">Hora de inicio de trabajo:</label>
+                    <input type="datetime" id="inicio_trabajo" name="inicio_trabajo" required>
+
+                    <label for="fin_trabajo">Hora de término de trabajo:</label>
+                    <input type="datetime" id="fin_trabajo" name="fin_trabajo" required>
+
+                    <label for="combustible">Combustible:</label>
+                    <input type="file" id="combustible" name="combustible" accept="image/*" required>
+
+                    <label for="horas_efectivas">Horas efectivas:</label>
+                    <input type="datetime" id="horas_efectivas" name="horas_efectivas" required>
+
+                    <label for="observaciones">Observaciones:</label>
+                    <textarea id="observaciones" name="observaciones" required></textarea>
+
+                    <input type="submit" value="Enviar">
+                </form>
+
+            </div>
+        </div>
+    </form>
+ -->
+
+    <!-- ... (código existente) ... -->
+
+    <!-- -------------------------------------------------------------- -->
+
+
+    <script src="tabla.js"></script>
+    <script src="script.js"></script>
+
+
+    <script>
+        function imprimirDatos() {
+          // Recopilar datos del formulario
+          const datos = {
+            nombre_operador: document.getElementById("rum-Input-Nombre-Operador").value,
+            no_empleado: document.getElementById("rum-Input-No-Empleado").value,
+            fecha: document.getElementById("rum-Input-Fecha").value,
+            rum_economico: document.getElementById("rum-Input-Economico").value,
+            tipo: document.getElementById("rum-Input-Tipo").value,
+            modelo: document.getElementById("rum-Input-Modelo").value,
+            llegada_operador: document.getElementById("rum-Input-llegada-operador").value,
+            salida_operador: document.getElementById("rum-Input-Salida-Operador").value,
+            encendido_maquina: document.getElementById("rum-Input-Encendido-Maquina").value,
+            apagado_maquina: document.getElementById("rum-Input-Apagado-Maquina").value,
+            fecha_hora: document.getElementById("fechaHoraCaptura").value,
+            ubicacion_info1: document.getElementById("ubicacion").value,
+            rum_tramo: document.getElementById("rum-Input-Tramo").value,
+            rum_subtramo: document.getElementById("rum-Input-Subtramo").value,
+            margen: document.getElementById("rum-Input-Apagado-Margen").value,
+            valor_porcentaje: obtenerValorPorcentaje(),
+            causa: document.getElementById("rum-Input-Causa").value,
+            fecha_hora_2: document.getElementById("fechaHoraCaptura-2").value,
+            ubicacion_info_2: document.getElementById("ubicacion-2").value
+            // Agrega el resto de los campos del formulario según sea necesario
+          };
+      
+          // Crear una tabla HTML para mostrar los datos
+          const encabezado = `<tr style="background-color:#FF8888 ; color: white; font-weight: bold;">
+                                <td style="border-left: 1px solid black; border-right: 1px solid black; padding: 1px; width: 50p">
+                                    <img src="imgs/grupoArsol.png" alt="Logo" style="max-height: 70px;">
+                                </td>
+                                <td colspan="2" style="border-left: 1px solid black; border-right: 1px solid black; padding: 2px; text-align: center; color:#FF2323;">Datos del Operador</td>
+                            </tr>`;
+      
+          // Crear una tabla HTML para mostrar los datos
+          let tablaHTML = '<table style="border-collapse: collapse; width: 100%; border: 1px solid black; page-break-inside: avoid; border-radius:6px;">';
+      
+          // Agregar el encabezado
+          tablaHTML += encabezado;
+      
+          // Agregar los datos
+          for (const key in datos) {
+            if (datos.hasOwnProperty(key)) {
+              tablaHTML += `<tr style="border: 1px solid black; page-break-inside: avoid;">
+                                <td style="border: 1px solid black; padding: 2px;"><strong>${key}</strong></td>
+                                <td style="border: 1px solid black; padding: 2px;">${datos[key]}</td>
+                            </tr>`;
+            }
+          }
+      
+          tablaHTML += '</table>';
+      
+          // Abrir una nueva ventana para mostrar la tabla e imprimir
+          const ventanaImpresion = window.open('', '_blank');
+          ventanaImpresion.document.write(tablaHTML);
+          ventanaImpresion.document.close();
+      
+          // Imprimir la ventana
+          ventanaImpresion.print();
+        }
+      
+        function obtenerValorPorcentaje() {
+          const valorPorcentaje = document.querySelector('input[name="valor_porcentaje"]:checked');
+          
+          if (valorPorcentaje) {
+            return valorPorcentaje.value;
+          } else {
+            return ''; // O puedes devolver un valor predeterminado o manejar la falta de selección de alguna manera
+          }
+        }
+      </script>
+      
+    
+
+</body>
+
+</html>
