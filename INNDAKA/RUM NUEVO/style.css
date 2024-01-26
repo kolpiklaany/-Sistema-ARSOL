@@ -95,7 +95,8 @@
 
 #rum-P-Title-Actividades-Horas-Campo{
     display: inline-block;
-    bottom: 18px;
+    position: relative;
+    bottom: 12px;
     color: #ED1D24;
     padding: 0 5px;
     font-size: 18px;
@@ -636,32 +637,72 @@ label {
 
 /*Contenedor de control de actividades horas campo */
 .rum-Div-Control-Actividades-Horas-Campo {
-    height: 40VH;
+    height: auto;
     width: 100%;
     border: 1px solid #030303;
     margin-bottom: 1.875rem;
-    max-height: 300px; /* Altura máxima del contenedor */
-    overflow-y: auto; 
+    padding: 0.5em;
+   
 }
-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {                
-    background-color: #FF8888;
-  }
-  #addRowBtn {
-    margin-top: 10px;
-    padding: 8px;
-    cursor: pointer;
-  
+.rum-Div-Control-Actividades-Horas-Campo label{
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    color: #ED1D24;
+    padding: 0 5px;
+    font-size:10px;
+}
+.rum-Div-No-Actividad,
+.rum-Div-Descripcion-Actividad,
+.rum-Div-Hora-Inicio-Trabajo,
+.rum-Div-Hora-Termino-Trabajo,
+.rum-Div-Horas-Efectivas,
+.rum-Div-Observaciones{
+    margin-right: 10px;
     
-  }
+}
+
+.rum-Div-Descripcion-Actividad,
+.rum-Div-Observaciones{
+    width: 40%;
+}
+.rum-Div-No-Actividad,
+.rum-Div-Hora-Inicio-Trabajo,
+.rum-Div-Hora-Termino-Trabajo,
+.rum-Div-Horas-Efectivas{
+    width: 12%;
+}
+.rum-Div-Combustible{
+    width: 20%;
+}
+
+
+.rum-Primer-Actividad,
+.rum-Segunda-Actividad,
+.rum-Tercera-Actividad,
+.rum-Cuarta-Actividad,
+.rum-Quinta-Actividad{
+    width: 100%;
+    border: 1px solid;
+    display: flex;
+    margin-bottom: 10px;
+    
+}
+.rum-Primer-Actividad input,
+.rum-Segunda-Actividad input,
+.rum-Tercera-Actividad input,
+.rum-Cuarta-Actividad input,
+.rum-Quinta-Actividad input{
+    width: 100%;
+    height: 32px;
+    border-radius: 6px;
+    font-size: 14px;
+    border: 2px solid rgb(0, 0, 0);
+    background: #fff;
+    color: #000;
+    outline: none;
+}
+
 
 /*Contenedor  ubicacion trabajos reportes y fallas */
 .rum-Div-Ubicacion-Trabajos-Reporte-Fallas {

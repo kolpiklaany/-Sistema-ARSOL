@@ -23,7 +23,7 @@
             <p id="rum-Bienvenida-header"> Bienvenida <b>Marta Caballero</b></p>
         </div>
         <div class="rum-Header-Center">
-            <h1>COLABORADORES</h1>
+            <h1>RUM</h1>
         </div>
         <div class="rum-Header-Right">
             <input type="text" placeholder="   Buscar..." name="buscador" id="rum-Input-Buscar">
@@ -31,7 +31,11 @@
         </div>
     </header>
     <!--    CONTENEDOR PADRE -->
+    <div class="rum-Div-Btn-Buscar">
+    <button type="button" name="buscar" id="rum-Btn-Buscar">Buscador Operadores</button>
+    </div>
     <div class="rum-Div-Padre">
+        
         <div class="rum-Div-Monitorista">
             <form action="guardar.php" method="post" class="rum-Form-Principal" enctype="multipart/form-data">
                 <div class="rum-Titulo">
@@ -85,11 +89,12 @@
                 </div>
                 <div class="rum-Div-Btn">
                 <button type="submit" name="guardar" id="rum-Btn-Guardar">Guardar</button>
+              
                 </div>
             </form>
         </div>
     </div>
-<!--     <script src="../script.js"></script> -->
+        <script src="script.js"></script>
 </body>
 
 </html>

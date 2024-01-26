@@ -127,11 +127,7 @@
                     </div>
                     <div class="input-with-label">
                         <label for="col-Input-Hijos">Hijos</label>
-                        <input list="col-Hijos-List" id="col-Input-Hijos" name="hijos" placeholder="Hijos" required>
-                    <datalist id="col-Hijos-List">
-                        <option value="Si">
-                        <option value="No">
-                    </datalist>
+                        <input id="col-Input-Hijos" name="hijos" placeholder="Hijos" required>
                     </div>
                     <div class="input-with-label">
                         <label for="col-Input-Cuenta">No. Cuenta</label>
@@ -267,9 +263,13 @@
                         id="col-Input-Salario-Mensual" required>
                     </div>
                     <div class="input-with-label">
-                        <label for="col-Input-Estado_actOn">Estado</label>
-                        <input type="text" placeholder="Estado" name="estado_registro"
-                        id="col-Input-Estado_actOn" required>
+                        <label for="col-Input-Estado_actOn">Estatus</label>
+                        <input  list="col-Estatus-List"type="text" placeholder="Estatus" name="estado_registro" id="col-Input-Estado_actOn" required>
+                        <datalist id="col-Estatus-List">
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                        
+                    </datalist>
                     </div>
                   
                 </div>
@@ -311,7 +311,12 @@
                     </div>
                     <div class="input-with-label">
                         <label for="contratacion">Estado de Contratación</label>
-                        <input type="text" placeholder="Estado de contratación" name="estado_contratacion" id="col-Input-Estado-Contratacion">
+                        <input  list="col-Contratacion-List"type="text" placeholder="Estado de contratación" name="estado_contratacion" id="col-Input-Estado-Contratacion">
+                        <datalist id="col-Contratacion-List">
+                        <option>Contratable</option>
+                        <option>No Contratable</option>
+                        
+                    </datalist>
                     </div>
  
             </div>

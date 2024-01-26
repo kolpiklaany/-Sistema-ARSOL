@@ -78,13 +78,13 @@
     padding: 2px;
 }
 
-#rum-BuscarBtn{
+#rum-BuscarBtn {
     position: relative;
     height: 3vh;
-    right:2.188rem;
+    right: 2.188rem;
     top: 0.325rem;
     border: none;
-   
+
 }
 
 /*---TERMINA HEADER----*/
@@ -92,7 +92,7 @@
 /*Elementos P y label*/
 #rum-p-Datos-Generales,
 #rum-p-Datos-Maquina-Vehiculo,
-#rum-p-Ubicacion-Trabajo{
+#rum-p-Ubicacion-Trabajo {
     display: inline-block;
     position: relative;
     bottom: 18px;
@@ -100,6 +100,7 @@
     padding: 0 5px;
     font-size: 18px;
 }
+
 label {
     display: inline-block;
     position: relative;
@@ -129,77 +130,105 @@ input::placeholder {
     font-size: 15px;
 }
 
-.rum-Div-Padre{
+.rum-Div-Btn-Buscar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+ 
+
+
+}
+
+#rum-Btn-Buscar {
+    margin-right: 30px;
+    font-size: 14px;
+    height: 32px;
+    width: 10%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #FF8888;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.rum-Div-Padre {
     width: 100%;
     height: 84vh;
-    background-image: url('imgs/fondo.png'); /* Ruta de tu imagen de fondo */
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir completamente el contenedor */
-    background-position: center; 
+    background-image: url('imgs/fondo.png');
+    /* Ruta de tu imagen de fondo */
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen para cubrir completamente el contenedor */
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.rum-Titulo{
+
+.rum-Titulo {
     width: 100%;
     text-align: center;
     margin-bottom: 30px;
 }
 
 
-.rum-Div-Monitorista{
-    height: 70vh;
+.rum-Div-Monitorista {
+    height: auto;
     border-radius: 10px;
     width: 50%;
     padding: 0.5em;
 }
 
-.rum-Form-Principal{
+.rum-Form-Principal {
     width: auto;
     height: auto;
 }
 
-.rum-Datos-Generales{
+.rum-Datos-Generales {
     width: 100%;
     margin-bottom: 30px;
     height: auto;
     border: 2px solid;
     padding: 0 5px
-
 }
-.rum-Div-Nombre-Operador{
+
+.rum-Div-Nombre-Operador {
     width: 100%;
     height: auto;
-    
-   
-  
+
+
+
 }
 
-.rum-Div-No-Empleado-Fecha{
-   width: 100%;
-   display: flex;
+.rum-Div-No-Empleado-Fecha {
+    width: 100%;
+    display: flex;
 }
 
 .rum-No-Empleado,
-.rum-Fecha{
+.rum-Fecha {
     width: 100%;
 }
-.rum-No-Empleado{
+
+.rum-No-Empleado {
     margin-right: 10px;
 }
-.rum-Datos-Maquina-Vehiculo{
+
+.rum-Datos-Maquina-Vehiculo {
     width: 100%;
     border: 2px solid;
     margin-bottom: 30px;
     padding: 0 5px
 }
-.rum-Div-Centro-Maquina-Vehiculo{
+
+.rum-Div-Centro-Maquina-Vehiculo {
     display: flex;
 }
+
 .rum-Numero-Economico,
-.rum-Tipo{
+.rum-Tipo {
     margin-right: 10px;
 }
-.rum-Div-Ubicacion-Trabajos{
+
+.rum-Div-Ubicacion-Trabajos {
     width: 100%;
     border: 2px solid;
     margin-bottom: 30px;
@@ -207,124 +236,156 @@ input::placeholder {
 }
 
 
-.rum-Div-Btn{
+.rum-Div-Btn {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#rum-Btn-Guardar{
+#rum-Btn-Guardar {
     font-size: 14px;
-  height: 32px;
-  width: 10%;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #FF8888;
-  border: 2px solid rgb(0, 0, 0);
+    height: 32px;
+    width: 10%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #FF8888;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 /*------DISEÑO PARA TABLET-------*/
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape),
-only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
-    .rum-Div-Padre{
-        height: 100vh;
+only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .rum-Div-Btn-Buscar {
+        width: 100%;
+        height: auto;
     }
-     .rum-Form-Principal{
-        height: 50vh;
     
-     }
-    .rum-Div-Monitorista{
+    #rum-Btn-Buscar{
+        width:20% ;
+        height: auto;
+    }
+
+    .rum-Div-Padre {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .rum-Form-Principal {
+        height: auto;
+
+    }
+
+    .rum-Div-Monitorista {
         height: 55vh;
         width: 80%;
-    
+
     }
 }
+
 /*------DISEÑO PARA CELULAR-----*/
 
-@media (max-width:768px) and (orientation: portrait){
- /*---HEADER CELULAR ----*/
- .col-Header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
+@media (max-width:768px) and (orientation: portrait) {
 
-.col-Header-Left {
-    order: 1;
-    align-self: flex-start;
-}
+    /*---HEADER CELULAR ----*/
+    .rum-Header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-.col-Header-Left img {
-    max-width: 50px;
+    .rum-Header-Left {
+        order: 1;
+        align-self: flex-start;
+    }
 
-}
+    .rum-Header-Left img {
+        max-width: 50px;
 
-.col-Header-Left p {
-    font-size: 8px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    position: relative;
-    right: 70px;
-}
+    }
 
-.col-Header-Center {
-    order: 2;
-}
+    .rum-Header-Left p {
+        font-size: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        position: relative;
+        right: 70px;
+    }
 
-.col-Header-Center h1 {
-    font-size: 15px;
-    margin-bottom: 20px;
-    position: relative;
-    bottom: 30px;
-    left: 30px;
-}
+    .rum-Header-Center {
+        order: 2;
+    }
 
-.col-Header-Right {
-    order: 3;
-    width: 80%;
+    .rum-Header-Center h1 {
+        font-size: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        bottom: 30px;
+        left: 30px;
+    }
 
-}
+    .rum-Header-Right {
+        order: 3;
+        width: 80%;
 
-.col-Header-Right input[type="text"] {
-    width: 100%;
-    height: 30px;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 12px;
-}
+    }
 
-.col-Header-Right button[type="submit"] {
-    position: absolute;
-    right: 25px;
-    top: 10px;
-    padding: 5px 10px;
-    color: #000000;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 10px;
-}
+    .rum-Header-Right input[type="text"] {
+        width: 100%;
+        height: 30px;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
 
-/*---TERMINA DIV DE HEADER---*/
+    .rum-Header-Right button[type="submit"] {
+        position: absolute;
+        right: 25px;
+        top: 10px;
+        padding: 5px 10px;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 10px;
+    }
 
-.rum-Div-Padre{
-    height: 100vh;
-}
-.rum-Div-Monitorista{
-    width: 100%;
-    height: 80vh;
-}
+    /*---TERMINA DIV DE HEADER---*/
+    .rum-Div-Btn-Buscar {
+        width: 100%;
+        height: auto;
+    }
+    
+    #rum-Btn-Buscar{
+        width:30% ;
+        height: auto;
+    }
+    .rum-Div-Padre {
+        height: 100vh;
+    }
 
-.rum-Form-Principal{
-    height: 75vh;
+    .rum-Div-Monitorista {
+        width: auto;
+        height: 100vh;
+    }
 
- }
-.rum-Div-Centro-Maquina-Vehiculo{
-    display: flex;
-    flex-direction: column;
-}
-#rum-Btn-Guardar{
-    width: 45%;
-}
+    .rum-Form-Principal {
+        height: 75vh;
+
+    }
+
+    .rum-Div-Centro-Maquina-Vehiculo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rum-Numero-Economico,
+    .rum-Tipo{
+        width: 100%;
+    }
+
+    #rum-Btn-Guardar {
+        width: 45%;
+    }
 }

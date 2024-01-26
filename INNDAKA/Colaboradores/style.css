@@ -504,7 +504,12 @@ input[type="file"] {
     border: 2px solid rgb(0, 0, 0);
     border-radius: 6px;
     margin-bottom: 10px;
+    padding: 5px 15px;
 }
+
+.input-with-label textarea:focus {
+    outline: none; /* Elimina el borde al seleccionar */
+  }
 /*DIV QUE TIENE EL TEXT AREA */
 
 

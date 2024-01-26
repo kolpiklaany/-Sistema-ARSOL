@@ -370,14 +370,46 @@ function buscarInformacion() {
            // Manejar los radio buttons de porcentaje
            var valorPorcentaje = response[0]['valor_porcentaje'] || ''; // Obtener el valor del porcentaje
            var radioButtons = document.getElementsByName('valor_porcentaje'); // Obtener todos los radio buttons */
+           document.getElementById('rum-Input-Actividad').value = response[0]['rum_actividad'] || '';
+           document.getElementById('rum-Input-Descripcion').value = response[0]['rum_descripcion'] || '';
+           document.getElementById('rum-Input-hora-inicio').value = response[0]['rum_hora_inicio'] || '';
+           document.getElementById('rum-Input-hora-termino').value = response[0]['rum_hora_termino'] || '';
+           document.getElementById('rum-Input-horas-efectivas').value = response[0]['rum_horas_efectivas'] || '';
+           document.getElementById('rum-Input-observaciones').value = response[0]['rum_observaciones'] || '';
+
+
+           
+
+           document.getElementById('rum-Input-Actividad_1').value = response[0]['rum_actividad_1'] || '';
+           document.getElementById('rum-Input-Descripcion_1').value = response[0]['rum_descripcion_1'] || '';
+           document.getElementById('rum-Input-hora-inicio_1').value = response[0]['rum_hora_inicio_1'] || '';
+           document.getElementById('rum-Input-hora-termino_1').value = response[0]['rum_hora_termino_1'] || '';
+           document.getElementById('rum-Input-horas-efectivas_1').value = response[0]['rum_horas_efectivas_1'] || '';
+           document.getElementById('rum-Input-observaciones_1').value = response[0]['rum_observaciones_1'] || '';
+
+
+
+
+
+           document.getElementById('rum-Input-Actividad_2').value = response[0]['rum_actividad_2'] || '';
+           document.getElementById('rum-Input-Descripcion_2').value = response[0]['rum_descripcion_2'] || '';
+           document.getElementById('rum-Input-hora-inicio_2').value = response[0]['rum_hora_inicio_2'] || '';
+           document.getElementById('rum-Input-hora-termino_2').value = response[0]['rum_hora_termino_2'] || '';
+           document.getElementById('rum-Input-horas-efectivas_2').value = response[0]['rum_horas_efectivas_2'] || '';
+           document.getElementById('rum-Input-observaciones_2').value = response[0]['rum_observaciones_2'] || '';
+
+
+
+
+
 
         // Recorrer los radio buttons para seleccionar el correcto
-        radioButtons.forEach(function (radio) {
+   /*      radioButtons.forEach(function (radio) {
           if (radio.value === valorPorcentaje) {
             radio.checked = true; // Marcar el radio button correspondiente al valor del porcentaje
           }
         });
-
+ */
         document.getElementById('rum-Input-Causa').value = response[0]['causa'] || '';
       } else {
         // No se encontraron resultados
@@ -854,5 +886,32 @@ function obtenerFormatoFechaHora(fecha) {
 
 
 
+function mostrarVistaPrevia(inputId, imgId) {
+  // Obtén el elemento de entrada de archivo
+  var inputCombustible = document.getElementById(inputId);
 
+  // Obtén el elemento <img> donde mostrar la vista previa
+  var imgVistaPrevia = document.getElementById(imgId);
+
+  // Verifica si se seleccionó un archivo
+  if (inputCombustible.files.length > 0) {
+      // Obtén el archivo seleccionado
+      var archivo = inputCombustible.files[0];
+
+      // Verifica si el archivo es una imagen
+      if (archivo.type.match(/^image\//)) {
+          // Crea un objeto URL para la vista previa de la imagen
+          var urlVistaPrevia = URL.createObjectURL(archivo);
+
+          // Muestra la vista previa de la imagen en el <img>
+          imgVistaPrevia.src = urlVistaPrevia;
+      } else {
+          // El archivo no es una imagen, muestra un mensaje de error o realiza otra acción
+          alert('El archivo seleccionado no es una imagen.');
+      }
+  } else {
+      // No se seleccionó ningún archivo, borra la vista previa
+      imgVistaPrevia.src = '';
+  }
+}
     

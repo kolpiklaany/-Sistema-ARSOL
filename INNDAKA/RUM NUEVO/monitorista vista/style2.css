@@ -1,0 +1,221 @@
+
+/* ------------- HEADER -------------- */
+.rum-Header-Left p {
+    position: relative;
+    top: 40px;
+    font-size: 12px;
+}
+
+.rum-Header h1 {
+    font-size: 30px;
+    text-shadow: 0px 0 6px #505050;
+    margin: 0;
+}
+
+.rum-Header-Left img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.rum-Header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+}
+
+
+.rum-Header-Left {
+    display: flex;
+    flex: 1;
+    padding-left: 0;
+}
+
+
+.rum-Header-Center {
+    flex: 2;
+    text-align: center;
+}
+
+.rum-Header-Right {
+    display: flex;
+    flex: 1;
+    padding-right: 10px;
+    position: relative;
+    width: 300px;
+}
+
+
+.rum-Header-Right input[type="text"] {
+    width: 100%;
+    height: 35px;
+    padding: 10px;
+    border-radius: 14px;
+}
+
+
+#rum-Input-Buscar {
+    width: 100%;
+    border-radius: 15px;
+    padding: 2px;
+}
+
+#rum-BuscarBtn{
+    position: relative;
+    height: 1vh;
+    right:2.188rem;
+    top: 0.313rem;
+    background: transparent;
+}
+
+/*---TERMINA HEADER----*/
+
+h1{
+    text-align: center;
+}
+.principal{
+    height: auto;
+    width: 100%;
+  
+}
+
+.formulario{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    
+}
+
+
+
+body {
+    font-size: 15px;
+    color: #343d44;
+    font-family: "segoe-ui", "open-sans", tahoma, arial;
+    padding: 0;
+    margin: 0;
+}
+
+ #BtnAgregar,
+ #BtnFormulario{
+    font-size: 14px;
+    height: 32px;
+    width: 10%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #FF8888;
+    border: 2px solid rgb(0, 0, 0);
+ }
+ #BtnAgregar:hover,
+ #BtnFormulario:hover {
+     background-color: #FF5555;
+ }
+ #BtnFormulario{
+    margin-right: 10px;
+ }
+ #BtnAgregar:active,
+ #BtnFormulario:active  {
+     background-color: #FF2323;
+ }
+
+
+ .BtnExcel{
+    margin-right: 10px;
+    font-size: 14px;
+    height: 32px;
+    width: 5%;
+    border-radius: 6px;
+    cursor: pointer;
+    background: lightgreen;
+    border: 2px solid rgb(0, 0, 0);
+ }
+
+ .BtnExcel:hover {
+    background-color: lime;
+}
+
+.BtnExcel:active {
+    background-color: lightseagreen;
+}
+
+table {
+    margin: auto;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
+    font-size: 12px;
+}
+
+h1 {
+    margin: 25px auto 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+div {
+    margin: 25px auto 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 17px;
+}
+
+table td {
+    transition: all .5s;
+}
+
+/* Table */
+.tabla_datos {
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 537px;
+}
+
+.tabla_datos th, 
+.tabla_datos td {
+    border: 1px solid #ffe2e1;
+    padding: 7px 17px;
+}
+.tabla_datos caption {
+    margin: 7px;
+}
+
+/* Table Header */
+#titulo {
+    background-color: #FF8888;
+    color: #FFFFFF;
+    border-color: #FF8888 !important;
+    text-transform: uppercase;
+}
+
+/* Table Body */
+.tabla_datos tbody td {
+    color: #353535;
+}
+.tabla_datos tbody td:first-child,
+.tabla_datos tbody td:nth-child(4),
+.tabla_datos tbody td:last-child {
+    text-align: right;
+}
+
+.tabla_datos tbody tr:nth-child(odd) td {
+  
+}
+.tabla_datos tbody tr:hover td {
+    background: #58C104;
+  
+}
+
+/* Table Footer */
+.tabla_datos tfoot th {
+    background: black;
+    text-align: right;
+}
+.tabla_datos tfoot th:first-child {
+    text-align: left;
+    background: black;
+    
+}
+.tabla_datos tbody td:empty
+{
+    background: black;
+}
+
+
